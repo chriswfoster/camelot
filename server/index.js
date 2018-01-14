@@ -6,7 +6,7 @@ const massive = require("massive")
 const passport = require("passport")
 const Auth0Strategy = require("passport-auth0")
 const sqlInfo = require("../config.js")
-const { secret } = require("../config.js").session
+const { secret } = require("./../config.js").session
 const { domain, clientID, clientSecret } = require("../config").auth0
 const http = require("http")
 
@@ -20,7 +20,6 @@ var c = new Client({
 });
 /////
 c.query('SELECT * FROM mob WHERE Name = Armswoman',
-{ id: 1337, name: 'Frylock' },
 function(err, rows) {
 if (err)
 throw err;
