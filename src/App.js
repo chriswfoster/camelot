@@ -7,8 +7,9 @@ class App extends Component {
 
 
 getFromDb(){
-  axios.get("fromdb")
-  .then(response => console.log(response))
+  console.log("fired off")
+  axios.get("/api/fromdb")
+  .then(response => console.log("this is it ", response))
 }
 
 
