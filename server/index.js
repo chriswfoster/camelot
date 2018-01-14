@@ -5,7 +5,7 @@ const cors = require("cors")
 const massive = require("massive")
 const passport = require("passport")
 const Auth0Strategy = require("passport-auth0")
-const sqlInfo = require("../config.js")
+const {host, user, password, database} = require("../config.js").sqlInfo
 // const { secret } = require("./../config.js").session
 const { domain, clientID, clientSecret } = require("../config").auth0
 const port = process.env.PORT || 3069
@@ -22,10 +22,10 @@ const controller = require("./controller/controller")
 ////////////To maria db.
 var mysql = require("mysql")
 var connection = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: 'Billywasnttheonlyguywhopooped',
-  database: 'dol'
+  host: host,
+  user: user,
+  password: password,
+  database: database
 })
 /////
 app.set("connection", connection)
