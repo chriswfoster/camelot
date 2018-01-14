@@ -44,7 +44,7 @@ connection.query("SELECT * from mob where Name = 'shark'", function (error, resu
 
 
 
-// app.use(express.static(`${__dirname}/../build`))
+app.use(express.static(`${__dirname}/../build`))
 
 // ATTACH SESSION
 // console.log("initial", session) //Session exists at this point
@@ -107,7 +107,7 @@ connection.query("SELECT * from mob where Name = 'shark'", function (error, resu
 
 
 ///////// HERE IS THE DB FUNCTION
-app.get("/api/fromdb", controller.heheh)
+app.put("/api/searchmobs", controller.mobFinder)
 
 
 
@@ -119,10 +119,10 @@ app.get("/api/fromdb", controller.heheh)
 
 
 
-// const path = require("path")
-// app.get("*", (req, res, next) => {
-//   res.sendFile(path.join(__dirname, "/../build/index.html"))
-// })
+const path = require("path")
+app.get("*", (req, res, next) => {
+  res.sendFile(path.join(__dirname, "/../build/index.html"))
+})
 
 app.listen(port, () => {
   console.log(`Listening on dat port: ${port}`)

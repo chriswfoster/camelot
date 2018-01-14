@@ -1,12 +1,18 @@
 module.exports = {
 
-heheh: (req, res, next) => {
+mobFinder: (req, res, next) => {
     const connection = req.app.get("connection")
-    connection.query("SELECT * from mob where Name = 'shark'", function (error, results, fields) {
-    if (error) throw error;
-   return res.status(200).send(results)
-  })
+    const {search} = req.body
+
+    connection.query(`SELECT DISTINCT Name, Level FROM mob WHERE Name LIKE '%${search}%' ORDER BY Name LIMIT 100`, function (error, results, fields) {
+        if (error) throw error;
+
+       return res.status(200).send(results)
+      })
+
 }
+
+
 
 
 }

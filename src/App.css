@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: black;
 }
 
 .App-logo {
@@ -19,10 +20,58 @@
 }
 
 .App-intro {
+  background-image: url('./TempBackground.jpg');
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
   font-size: large;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.App-whitebox {
+background-color: rgb(197, 203, 255);
+width: 90vw;
+max-height: 80%;
+overflow-y: auto;
+
+}
+
+th,
+td {
+  padding: 5px 5px 5px 8px;
+  margin:40px 10px 20px 10px;
+  color: rgb(0, 0, 0);
+  border-bottom: 2px solid var(--main-bg-color);
+  border-left: 2px solid var(--main-bg-color);
+  word-wrap: break-word;
+  table-layout: fixed;
+  width: 95%;
+  height: 100%;
+}
+table{
+  margin:40px 10px 20px 10px;
+  color: rgb(0, 0, 0);
+  word-wrap: break-word;
+  table-layout: fixed;
+  width: 95%;
+  height: 100%;
+
+}
+th{
+  border-bottom: 2px solid var(--main-blue-color);
+  border-left: none;
+  color: var(--main-blue-color);
+  font-size: 1.2em;
 }
