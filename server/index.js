@@ -10,13 +10,26 @@ const { secret } = require("../config.js").session
 const { domain, clientID, clientSecret } = require("../config").auth0
 const http = require("http")
 
-//To maria db.
+////////////To maria db.
 var Client = require('mariasql');
 var c = new Client({
   host: 'sqlInfo.host',
   user: 'sqlInfo.user',
-  password: 'sqlInfo.password'
+  password: 'sqlInfo.password',
+  db: 'sqlInfo.db'
 });
+/////
+c.query('SELECT * FROM mob WHERE Name = Armswoman',
+{ id: 1337, name: 'Frylock' },
+function(err, rows) {
+if (err)
+throw err;
+console.dir(rows);
+});
+
+
+
+
 
 
 const port = process.env.PORT || 3069
