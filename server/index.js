@@ -11,25 +11,24 @@ const { domain, clientID, clientSecret } = require("../config").auth0
 const http = require("http")
 
 ////////////To maria db.
-var Client = require('mariasql');
-var c = new Client({
-  host: 'sqlInfo.host',
-  user: 'sqlInfo.user',
-  password: 'sqlInfo.password',
-  db: 'sqlInfo.db'
-});
+var mysql = require("mysql")
+var c = mysql.createConnection({
+  host: "sqlInfo.host",
+  user: "sqlInfo.user",
+  password: "sqlInfo.password",
+  database: "sqlInfo.db"
+})
 /////
-c.query('SELECT * FROM mob WHERE Name = Armswoman',
-function(err, rows) {
-if (err)
-throw err;
-console.dir(rows);
-});
-
-
-
-
-
+c.connect()
+c.query("SELECT * FROM mob WHERE Name = Armswoman", function(
+  err,
+  results,
+  fields
+) {
+  if (error) throw error
+  console.dir("The solution is: ", results[0])
+})
+connection.end()
 
 const port = process.env.PORT || 3069
 
@@ -42,8 +41,6 @@ app.use(express.static(`${__dirname}/../build`))
 
 app.use(json())
 app.use(cors())
-
-
 
 app.use(session) // ATTACH SESSION
 // console.log("initial", session) //Session exists at this point
@@ -102,26 +99,12 @@ app.get("/login", passport.authenticate("auth0"), function(req, res, next) {
   req.user.rank === 3 ? res.redirect("/student") : res.redirect("/mentorview")
 })
 
-
-
-
-
-app.get("/api/fromdb", controller.getAllPosts)
-
-
-
-
-
-
+app.get("/api/fromdb", c.query)
 
 const path = require("path")
 app.get("*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "/../build/index.html"))
 })
-
-
-
-
 
 app.listen(port, () => {
   console.log(`Listening on dat port: ${port}`)
