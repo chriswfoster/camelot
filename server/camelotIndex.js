@@ -5,7 +5,7 @@ const cors = require("cors")
 const massive = require("massive")
 const passport = require("passport")
 const Auth0Strategy = require("passport-auth0")
-const {host, user, password, database} = require("../config.js").sqlInfo
+const {host, user, password, database, port} = require("../config.js").sqlInfo
 // const { secret } = require("./../config.js").session
 const { domain, clientID, clientSecret } = require("../config").auth0
 const port = process.env.PORT || 3069
@@ -25,7 +25,8 @@ var connection = mysql.createConnection({
   host: host,
   user: user,
   password: password,
-  database: database
+  database: database,
+  port: port
 })
 /////
 app.set("connection", connection)
