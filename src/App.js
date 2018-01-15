@@ -38,7 +38,7 @@ handleSearch(val){
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Diety Node</h1>
+          <h1 className="App-title">Welcome to Deity Node</h1>
         </header>
         <div className="App-intro">
         <div className="App-whitebox">
