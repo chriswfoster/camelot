@@ -26,7 +26,7 @@ var connection = mysql.createConnection({
   user: user,
   password: password,
   database: database,
-  port: port
+  port: mysqlport
 })
 /////
 app.set("connection", connection)
