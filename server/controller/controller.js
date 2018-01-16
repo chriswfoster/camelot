@@ -25,6 +25,17 @@ WHERE dc.Name LIKE '%${search}%' ORDER BY dc.Name asc, tp.Name LIMIT 300`, funct
   })
 },
 
+getNewsFeed: (req, res, next) => {
+    const connection = req.app.get("connection")
+    const {search} = req.body
+
+    connection.query(`SELECT * FROM newsfeed
+ORDER BY post_id DESC`, function (error, results, fields) {
+    if (error) throw error;
+
+   return res.status(200).send(results)
+  })
+}
 
 
 

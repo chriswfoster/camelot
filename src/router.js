@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import {Provider} from 'react-redux';
 
 import Home from './components/Home/Home'
+import MobBrowser from './components/MobBrowser/MobBrowser'
 import ViewPlayerInv from './components/ViewPlayerInv/ViewPlayerInv.js'
 
 import store from './store'
@@ -13,6 +14,7 @@ export default(
     <Switch>
     <Route exact path="/" component={Home}/>
     <Route path="/viewplayersinv" component={ViewPlayerInv} />
+    <Route path="/mobbrowser" component={MobBrowser} />
         
         </Switch>
     </Provider>

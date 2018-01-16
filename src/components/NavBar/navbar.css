@@ -62,9 +62,9 @@ overflow-x: hidden;
 /* Position and sizing of burger button */
 .bm-burger-button {
     position: fixed;
-    width: 36px;
-    height: 30px;
-    left: 36px;
+    width: 66px;
+    height: 60px;
+    left: 30%;
     top: 36px;
     animation-name: dda;
     animation-duration: 1s;
@@ -75,24 +75,30 @@ overflow-x: hidden;
     -webkit-animation-fill-mode: forwards;
     -webkit-animation-delay: 2s;
   }
-  
+  .bm-burger-button:hover {
+      background-color: blue;
+  }
   @keyframes dda {
     0% {
         transform: rotate(0deg);
-        width: 36px;
-        height: 30px;
+        width: 66px;
+        height: 60px;
+        left: 30%;
+    
     }
     50%{
         background: red;
-width: 72px;
-height: 60px;
+width: 92px;
+height: 80px;
     }
    
      100% {
          background: clear;
         transform: rotate(360deg);
-        width: 36px;
-        height: 30px;
+        width: 66px;
+        height: 60px;
+        left: 36px;
+
       }
   }
   @-webkit-keyframes dda {

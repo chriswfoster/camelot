@@ -108,6 +108,7 @@ app.use(express.static(`${__dirname}/../build`))
 
 
 ///////// HERE IS THE DB FUNCTION
+app.get("/api/getthenews", controller.getNewsFeed)
 app.put("/api/searchmobs", controller.mobFinder)
 app.put("/api/searchplayersinv", controller.searchPlayersInventory)
 

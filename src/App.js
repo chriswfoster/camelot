@@ -4,7 +4,8 @@ import axios from 'axios'
 
 import NavBar from './components/NavBar/NavBar'
 
-import './App.css';
+import './App.css'
+
 
 
 

@@ -1,0 +1,96 @@
+.App {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+  }
+  .home {
+color: rgb(255, 224, 224);
+
+
+  }
+
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+  }
+  
+  .App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+  }
+  
+  .App-title {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-family: "nitti", sans-serif;
+  }
+  
+  .App-intro {
+    background-image: url('./TempBackground.jpg');
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    font-size: large;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      align-content: stretch;
+  }
+  
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .home-whitebox {
+  background-color: rgba(197, 203, 255, 0.205);
+  width: 90vw;
+  max-height: 80%;
+  overflow-y: auto;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
+  }
+  .home-whitebox h1{
+  text-transform: uppercase;
+  font-family: "nitti", sans-serif;
+  }
+  .homewhitebox a:hover{
+      background-color: black;
+      color: white;
+  }
+  
+  .blockabovenewsfeed {
+margin-top: 2%;
+width: 60%;
+border-width: 1px;
+border-style: solid;
+border-color: blue;
+}
+
+
+  .newsfeedpostbox{
+      border-style: solid;
+      border-color: black;
+      width: 60%;
+      margin-bottom: 1%;
+      padding: 5px;
+      font-family: "nitti", sans-serif;
+  }
+  .newsfeedpostbox h3, h6{
+    text-transform: uppercase;
+text-align: left;
+text-decoration: underline;
+  }
+  
+  
