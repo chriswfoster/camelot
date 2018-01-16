@@ -1,0 +1,49 @@
+.viewplayerinvmain{
+    background-color: black;
+    color:white;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+    align-content: stretch;
+    height: 90vh;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+}
+
+
+
+.viewplayerinvmain td, th {
+  padding: 5px 5px 5px 8px;
+  margin:40px 10px 20px 10px;
+  color: white;
+  border-bottom: 2px solid rgb(131,131,131);
+  border-left: 2px solid rgb(131,131,131);
+  word-wrap: break-word;
+  table-layout: fixed;
+  width: 95%;
+  height: 100%;
+}
+.viewplayerinvmain table{
+  margin:40px 10px 20px 10px;
+  color: white;
+  word-wrap: break-word;
+  table-layout: fixed;
+  width: 95%;
+  height: 100%;
+
+}
+.viewplayerinvmain th{
+  border-bottom: 2px solid rgb(131,131,131);
+  border-left: none;
+  color: white;
+  font-size: 1.2em;
+}
+.tablefontcolor {
+    color: white;
+}

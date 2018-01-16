@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import router from './router'
-import './App.css';
 import axios from 'axios'
+
+import NavBar from './components/NavBar/NavBar'
+
+import './App.css';
+
+
 
 class App extends Component {
 constructor(){
@@ -11,7 +16,8 @@ super()
   render() {
   
     return (
-      <div>
+      <div className="App">
+<NavBar />
        {router}
       </div>
     );

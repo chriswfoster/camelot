@@ -1,6 +1,7 @@
 .App {
-  text-align: center;
   background-color: black;
+  width: 100vw;
+  height: 100vh;
 }
 
 .App-logo {
@@ -48,7 +49,12 @@ overflow-y: auto;
 
 }
 
-th,
+
+.home {
+  text-align: center;
+  background-color: black;
+}
+.home th,
 td {
   padding: 5px 5px 5px 8px;
   margin:40px 10px 20px 10px;
@@ -60,7 +66,7 @@ td {
   width: 95%;
   height: 100%;
 }
-table{
+.home table{
   margin:40px 10px 20px 10px;
   color: rgb(0, 0, 0);
   word-wrap: break-word;
@@ -69,7 +75,7 @@ table{
   height: 100%;
 
 }
-th{
+.home th{
   border-bottom: 2px solid var(--main-blue-color);
   border-left: none;
   color: var(--main-blue-color);
