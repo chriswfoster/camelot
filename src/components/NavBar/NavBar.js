@@ -8,16 +8,13 @@ class NavBar extends Component {
 constructor(){
     super()
     this.state = {
-        // toDisplay: "hide"
+    
     }
 }
 
-// showNavbarModal(){
-//     this.state.toDisplay === "hide" ? this.setState({toDisplay: "show"})
-//     : 
-//     this.setState({toDisplay: "hide"})
-// }
-
+handleLogin() {
+    window.location.href = "/login"
+  }
 
 
     render(){
@@ -29,15 +26,10 @@ constructor(){
                 <p><a href="https://discord.gg/qwsuvh" style={{  textDecoration: 'none', color: 'lightblue'}}>DISCORD</a></p>
                 <p><Link to="/mobbrowser" style={{ textDecoration: 'none', color: 'lightblue'}}><center> Browse Database for Mobs</center></Link></p>
                 <p><Link to="/viewplayersinv" style={{ textDecoration: 'none', color: 'lightblue'}}><center> VIEW A PLAYERS INVENTORY!</center></Link></p>
+                <p onClick={() => this.handleLogin()}>Login</p>
                     </Menu>
 
-               {/* {this.state.toDisplay === "show" ? 
-<div className="dropdownanimator">
-
-                <p><Link to="/"> HOME </Link></p>
-                <p><Link to="/viewplayersinv"> VIEW A PLAYERS INVENTORY</Link></p>
-     </div>           
-                : <div />} */}
+   
             
                 
                 

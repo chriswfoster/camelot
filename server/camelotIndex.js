@@ -1,12 +1,13 @@
 const express = require("express")
 const { json } = require("body-parser")
 const cors = require("cors")
-// const session = require("express-session")
+var bcrypt = require('bcrypt');
+const session = require("express-session")
 const massive = require("massive")
 const passport = require("passport")
 const Auth0Strategy = require("passport-auth0")
 const {host, user, password, database, mysqlport} = require("../config.js").sqlInfo
-// const { secret } = require("./../config.js").session
+const { secret } = require("./../config.js").session
 const { domain, clientID, clientSecret } = require("../config").auth0
 const port = process.env.PORT || 3069
 
@@ -16,7 +17,14 @@ app.use(cors())
 const controller = require("./controller/controller")
 
 
-// app.use(session) 
+app.use(
+  session({
+    secret,
+    resave: false,
+    saveUninitialized: false
+  })
+)
+
 
 
 ////////////To maria db.
@@ -43,14 +51,60 @@ connection.query("SELECT * from mob where Name = 'shark'", function (error, resu
 }
 
 
+const saltRounds = 10;
+const myPlaintextPassword = 's0/\/\P4$$w0rD';
+const someOtherPlaintextPassword = 'not_bacon';
+
+
+// bcrypt.genSalt(saltRounds, function(err, salt) {
+//   bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
+//     connection.query(`insert into webusers(name, password) values('chriswf', '${hash}')`, function (error, results, fields) {
+//       if (error) throw error;
+//       console.log(results)
+
+//     })
+    
+//   });
+// });
+
+connection.query(`SELECT password from webusers WHERE name = 'chriswf'`, function (error, results, fields) {
+        if (error) throw error;
+        console.log(results[0].password)
+      var hash = results[0].password
+    bcrypt.compare(myPlaintextPassword, "hash").then(function(res) {
+      console.log(res)
+  })
+      })
+    
+
+
 
 
 app.use(express.static(`${__dirname}/../build`))
 
-// ATTACH SESSION
-// console.log("initial", session) //Session exists at this point
+
+// app.use(session) // ATTACH SESSION
+// // console.log("initial", session) //Session exists at this point
 
 //Auth0
+app.use(
+  session({
+    secret,
+    resave: false,
+    saveUninitialized: false
+  })
+)
+
+
+
+
+
+
+
+
+
+
+
 
 // app.use(passport.initialize())
 // app.use(passport.session())
@@ -64,25 +118,19 @@ app.use(express.static(`${__dirname}/../build`))
 //       callbackURL: "/login"
 //     },
 //     function(accessToken, refreshToken, extraParams, profile, done) {
-//       console.log("PROFILE", profile._json.email)
-//       app
-//         .get("db")
-//         .getUserByAuthId([profile.id])
-//         .then(response => {
-//           if (!response[0]) {
-//             const db = app.get("db")
-//             db
-//               .createUserByAuth([
-//                 profile.id,
-//                 profile.displayName,
-//                 profile.picture,
-//                 profile._json.email
-//               ])
-//               .then(created => {
-//                 return done(null, created[0])
-//               })
-//           } else {
-//             return done(null, response[0])
+//       console.log("PROFILE", profile._json.email, "profile ID:", profile.id)
+//       app.get("connection")
+//      connection.query(`SELECT * FROM webusers WHERE authid = '${profile.id}'`, function (error, results, fields) {
+//         if (error) throw error;
+//         console.log(results[0], 'heres first results')
+//         if (!results[0]) {
+//           // const db = app.get("db")
+//           // db
+//           connection.query(`INSERT INTO webusers (authid, email, name) VALUES ('${profile.id}', '${profile._json.email}', '${profile.displayName}');`, function (error, results, fields) {
+//             if (error) throw error;
+//             console.log(results)
+//            return done( results[0].RowDataPacket)
+//           })} else { return done( results[0].RowDataPacket)
 //           }
 //         })
 //     }
@@ -97,14 +145,19 @@ app.use(express.static(`${__dirname}/../build`))
 //   done(null, obj)
 // })
 
-// let you
-// app.get("/login", passport.authenticate("auth0"), function(req, res, next) {
-//   you = req.user
-//   req.session.user = req.user
-//   req.user.rank === 3 ? res.redirect("/student") : res.redirect("/mentorview")
-// })
+
+app.get(
+  "/login",
+  passport.authenticate("auth0", {
+    successRedirect: "/yourpage" //this is the page they'll land on. Could make it their user page.
+  })
+)
 
 
+app.get("/api/logout", function(req, res, next) {
+  req.session.destroy()
+  res.redirect("/login")
+})
 
 
 ///////// HERE IS THE DB FUNCTION

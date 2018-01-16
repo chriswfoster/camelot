@@ -26,6 +26,8 @@ overflow-x: hidden;
 
  .navbarbackground p {
       border-style: solid;
+      color: lightblue;
+      border-color: white;
   }
 
   .navbarbackground p:hover {

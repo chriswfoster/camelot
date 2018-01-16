@@ -15,10 +15,7 @@ searchPlayersInventory: (req, res, next) => {
     const connection = req.app.get("connection")
     const {search} = req.body
 
-    connection.query(`SELECT dc.Name as PlayerName, tp.Name as ItemName, nv.Count  from inventory nv
-JOIN itemtemplate tp ON nv.ITemplate_Id = tp.Id_nb
-JOIN dolcharacters dc ON dc.DOLCharacters_id = nv.OwnerID
-WHERE dc.Name LIKE '%${search}%' ORDER BY dc.Name asc, tp.Name LIMIT 300`, function (error, results, fields) {
+    connection.query(`SELECT dc.Name as PlayerName, tp.Name as ItemName, nv.Count  from inventory nv JOIN itemtemplate tp ON nv.ITemplate_Id = tp.Id_nb JOIN dolcharacters dc ON dc.DOLCharacters_id = nv.OwnerID WHERE dc.Name LIKE '%${search}%' ORDER BY dc.Name asc, tp.Name LIMIT 300`, function (error, results, fields) {
     if (error) throw error;
 
    return res.status(200).send(results)
@@ -29,14 +26,12 @@ getNewsFeed: (req, res, next) => {
     const connection = req.app.get("connection")
     const {search} = req.body
 
-    connection.query(`SELECT * FROM newsfeed
-ORDER BY post_id DESC`, function (error, results, fields) {
+    connection.query(`SELECT * FROM newsfeed ORDER BY post_id DESC`, function (error, results, fields) {
     if (error) throw error;
 
    return res.status(200).send(results)
   })
-}
-
+},
 
 
 }
