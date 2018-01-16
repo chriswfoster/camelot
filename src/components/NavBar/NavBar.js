@@ -26,7 +26,7 @@ handleLogin() {
                 <p><a href="https://discord.gg/qwsuvh" style={{  textDecoration: 'none', color: 'lightblue'}}>DISCORD</a></p>
                 <p><Link to="/mobbrowser" style={{ textDecoration: 'none', color: 'lightblue'}}><center> Browse Database for Mobs</center></Link></p>
                 <p><Link to="/viewplayersinv" style={{ textDecoration: 'none', color: 'lightblue'}}><center> VIEW A PLAYERS INVENTORY!</center></Link></p>
-                <p onClick={() => this.handleLogin()}>Login</p>
+                <p><Link to="/loginsignup" style={{ textDecoration: 'none', color: 'lightblue'}}><center>Login</center></Link></p>
                     </Menu>
 
    
