@@ -35,7 +35,7 @@ class MobBrowser extends Component {
         ))
         return(
             <div className="mobbrowsermain">
-
+<div className="mobbrowsercontent">
 <h1> Just below, you can browse some of the mobs in the database, by name.</h1>
  <h3> Limited by 100 rows per search.</h3>
 <input placeholder="Search mob name here:" type="text" onChange={(e) => this.handleSearch(e.target.value)} />
@@ -52,6 +52,7 @@ class MobBrowser extends Component {
 </tbody>
 </table></div> :
 <div />}
+</div>
                 </div>
 
         )

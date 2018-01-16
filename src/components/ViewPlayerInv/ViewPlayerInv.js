@@ -38,7 +38,7 @@ searchPlayers(term){
         ))
         return(
             <div className="viewplayerinvmain">
-
+<div className="mobbrowsercontent">
             <h1> Here you can browse another player's inventory, this will include personal vaults as well I believe.</h1>
 
 <input placeholder="Type Player Name Here:" type="text"  onChange={(e) => this.handleSearch(e.target.value)} />
@@ -56,6 +56,7 @@ searchPlayers(term){
 </tbody>
 </table></div> :
 <div />}
+</div>
                 </div>
 
         )

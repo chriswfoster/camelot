@@ -8,9 +8,18 @@
 	justify-content: center;
 	align-items: center;
     align-content: stretch;
-    height: 80vh;
+    max-height: 95vh;
     width: 100vw;
+   
   }
+
+  .mobbrowsercontent {
+      margin-top: 10%;
+    overflow-y: scroll;
+  }
+
+
+
   .mobbrowsermain td, th {
     padding: 5px 5px 5px 8px;
     margin:40px 10px 20px 10px;
