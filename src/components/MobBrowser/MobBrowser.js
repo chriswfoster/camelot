@@ -39,7 +39,7 @@ class MobBrowser extends Component {
 <h1> Just below, you can browse some of the mobs in the database, by name.</h1>
  <h3> Limited by 100 rows per search.</h3>
 <input placeholder="Search mob name here:" type="text" onChange={(e) => this.handleSearch(e.target.value)} />
-<button onClick={() => this.searchMobs(this.state.searchTerm)}> Click here for user </button>
+<button onClick={() => this.searchMobs(this.state.searchTerm)}> Click to Search</button>
 {searchList.length > 0? 
           <div>
 <table>
