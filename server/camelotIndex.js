@@ -40,43 +40,7 @@ var connection = mysql.createConnection({
 app.set("connection", connection)
 app.set("bcrypt", bcrypt)
 
-function blah (req, res, next){
 
-connection.query("SELECT * from mob where Name = 'shark'", function (error, results, fields) {
-    if (error) throw error;
-    console.log(results)
-   return res.status(200).send(results)
-  })
-  
-
-}
-
-
-const saltRounds = 10;
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
-const someOtherPlaintextPassword = 'not_bacon';
-
-
-// bcrypt.genSalt(saltRounds, function(err, salt) {
-//   bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-//     connection.query(`insert into webusers(name, password) values('chriswf', '${hash}')`, function (error, results, fields) {
-//       if (error) throw error;
-//       console.log(results)
-
-//     })
-    
-//   });
-// });
-
-// connection.query(`SELECT password from webusers WHERE name = 'chriswf'`, function (error, results, fields) {
-//         if (error) throw error;
-//         console.log(results[0].password)
-//       var hash = results[0].password
-//     bcrypt.compare(myPlaintextPassword, "hash").then(function(res) {
-//       console.log(res)
-//   })
-//       })
-    
 
 
 
@@ -120,7 +84,10 @@ app.put("/api/searchplayersinv", controller.searchPlayersInventory)
 app.put('/api/loginuser', controller.loginUser)
 app.post('/api/registeruser', controller.registerUser)
 
-
+app.get("/api/me", function(req, res) {
+  if (!req.session.user) return res.status(401)
+  res.status(200).json(req.session.user)
+})
 
 
 

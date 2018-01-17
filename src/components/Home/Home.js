@@ -21,7 +21,7 @@ componentDidMount(){
 render() { 
   const {thenews} = this.state
   const newsarticles = thenews.map((article, i) => (
-  <div className="newsfeedpostbox">
+  <div className="newsfeedpostbox" key={i}>
     <h3>{article.title}</h3>
    
     <p>{article.postbody}</p>

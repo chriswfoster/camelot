@@ -52,17 +52,31 @@ registerUser: (req, res, next) => {
                     if (error){ 
                         console.log(error)
                         res.status(200).send({status: 'Broke'})} else
-                        console.log(results)
-                        return res.status(200).send(results)
+                        req.session.user=results
+                      return res.status(200).send(results)
                   })
             }
-      
-          })
+      })
           })
       })
 },
 loginUser: (req, res, next) => {
-
+    const connection = req.app.get("connection")
+    const bcrypt = req.app.get("bcrypt")
+    const {username, password} = req.body
+    connection.query(`SELECT * from webusers WHERE username = '${username}'`, function (error, results, fields) {
+        if (error){ console.log(error)
+        }else if (results.length > 0){
+     var hash = results[0].password
+    bcrypt.compare(password, hash).then(function(answer) {
+       if (answer == true){ 
+            req.session.user = results[0]
+           res.status(200).send(results[0])
+           } else if (answer == false) {res.status(200).send("BADPW")}
+  })} else if (results.length < 1){
+    res.status(200).send('UnknownUser')
+  }
+      })
 },
 
 

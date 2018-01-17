@@ -6,6 +6,7 @@ import Home from './components/Home/Home'
 import MobBrowser from './components/MobBrowser/MobBrowser'
 import ViewPlayerInv from './components/ViewPlayerInv/ViewPlayerInv.js'
 import LoginSignup from './components/LoginSignup/LoginSignup'
+import YourNode from './components/YourNode/YourNode'
 
 import store from './store'
 
@@ -17,6 +18,7 @@ export default(
     <Route path="/viewplayersinv" component={ViewPlayerInv} />
     <Route path="/mobbrowser" component={MobBrowser} />
     <Route path="/loginsignup" component={LoginSignup} />
+    <Route path="/yournode" component={YourNode} />
         
         </Switch>
     </Provider>

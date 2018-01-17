@@ -12,9 +12,7 @@ constructor(){
     }
 }
 
-handleLogin() {
-    window.location.href = "/login"
-  }
+
 
 
     render(){

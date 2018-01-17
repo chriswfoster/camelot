@@ -1,19 +1,26 @@
 import React, {Component} from 'react'
-
+import { Redirect } from 'react-router'
 import axios from 'axios'
 import './loginsignup.css'
+import { connect } from "react-redux"
+import { loadUserInfo } from "../../redux/reducer"
+
 
 class LoginSignup extends Component {
-constructor(){
-    super()
+constructor(props){
+    super(props)
     this.state={
         registerUsername: "",
         registerPassword: "",
         loginUsername: "",
-        loginPassword: ""
+        loginPassword: "",
+        redirect: null
     }
+    this.loginUser=this.loginUser.bind(this)
 }
-
+redirectLogin(){
+window.location.href = "http://localhost:3000/yournode"
+}
     handleregisterusername(val){
 this.setState({registerUsername: val})
     }
@@ -28,24 +35,43 @@ this.setState({registerPassword: val})
     handleloginpassword(val){
         this.setState({loginPassword: val})
     }
+
     loginUser(un, pw){
-axios.put("/api/loginuser", {
+    axios.put("/api/loginuser", {
     username: un,
     password: pw
 })
-    .then(response => console.log(response))
+    .then(response => {
+        console.log(response)
+        if (response.data.userid){ 
+            this.props.loadUserInfo(response)
+        this.setState({redirect: <Redirect to="/yournode"/>})
+        } else if (response.data === 'BADPW'){
+            alert("That password appears to be incorrent. If you're unable to figure it out, reach out to chriswf for help.")
+        } else if (response.data === 'UnknownUser'){
+            alert("This Username doesn't appear to be in our system.")
+        }
+    })
     }
 
     registerUser(un, pw){
-        alert("Credentials Sent!")
-axios.post("/api/registeruser", {
+    if (un.length < 1 || pw.length < 1){ alert("You MUST type a username AND password")
+    } else if (un.length >= 1 && pw.length >= 1 ){
+    alert("Credentials Sent!")
+    axios.post("/api/registeruser", {
     username: un,
     password: pw
-})
-.then(response => console.log(response))
-    }
-    render(){
+    })
+    .then(response => console.log(response))
+    }}
+
+
+
+    render(props){
+        const {loginUser} = this.props
+
         return(
+            
             <div className="loginmain">
 
 
@@ -77,10 +103,13 @@ axios.post("/api/registeruser", {
                   </div>
               
                     </div>
-
+{this.state.redirect}
 
                 </div>
         )
     }
 }
-export default LoginSignup
+const mapStateToProps = state => state
+export default connect(mapStateToProps, {
+  loadUserInfo
+})(LoginSignup)
