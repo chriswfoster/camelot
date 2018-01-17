@@ -22,11 +22,11 @@ handleLogin() {
             <div className="navbarbackground" >
                 <Menu customBurgerIcon={ <img src={require('./menu.png')}/> }>
                     <div> Site Navigation: </div>
-                <p><Link to="/" style={{ textDecoration: 'none', color: 'lightblue'}}><center> HOME </center> </Link></p>
+                <p><Link to="/" style={{ textDecoration: 'none', color: 'lightblue',  'textAlign': 'center'}}> HOME </Link></p>
                 <p><a href="https://discord.gg/qwsuvh" style={{  textDecoration: 'none', color: 'lightblue'}}>DISCORD</a></p>
-                <p><Link to="/mobbrowser" style={{ textDecoration: 'none', color: 'lightblue'}}><center> Browse Database for Mobs</center></Link></p>
-                <p><Link to="/viewplayersinv" style={{ textDecoration: 'none', color: 'lightblue'}}><center> VIEW A PLAYERS INVENTORY!</center></Link></p>
-                <p><Link to="/loginsignup" style={{ textDecoration: 'none', color: 'lightblue'}}><center>Login</center></Link></p>
+                <p><Link to="/mobbrowser" style={{ textDecoration: 'none', color: 'lightblue',  'textAlign': 'center'}}> Browse Database for Mobs</Link></p>
+                <p><Link to="/viewplayersinv" style={{ textDecoration: 'none', color: 'lightblue',  'textAalign': 'center'}}> VIEW A PLAYERS INVENTORY!</Link></p>
+                <p><Link to="/loginsignup" style={{ textDecoration: 'none', color: 'lightblue',  'textAlign': 'center'}}>Login</Link></p>
                     </Menu>
 
    

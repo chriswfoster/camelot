@@ -33,5 +33,37 @@ getNewsFeed: (req, res, next) => {
   })
 },
 
+registerUser: (req, res, next) => {
+    const connection = req.app.get("connection")
+    const bcrypt = req.app.get("bcrypt")
+    const {username, password} = req.body
+    const saltRounds = 10;
+
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+        bcrypt.hash(password, salt, function(err, hash) {
+          connection.query(`insert into webusers(username, password) values('${username}', '${hash}');`, function (error, results, fields) {
+            if (error){
+                if (error.code === 'ER_DUP_ENTRY'){
+                return res.status(200).send({status: "ALREADY EXISTS"})
+            } else console.log (error) 
+            return res.status(500).send()} else if (results.affectedRows > 0) {
+
+                connection.query(`SELECT * FROM webusers WHERE username = '${username}'`, function (error, results, fields) {
+                    if (error){ 
+                        console.log(error)
+                        res.status(200).send({status: 'Broke'})} else
+                        console.log(results)
+                        return res.status(200).send(results)
+                  })
+            }
+      
+          })
+          })
+      })
+},
+loginUser: (req, res, next) => {
+
+},
+
 
 }

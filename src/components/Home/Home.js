@@ -18,15 +18,15 @@ componentDidMount(){
     .then(response => this.setState({thenews: response.data}))
 }
 
-render() {
+render() { 
   const {thenews} = this.state
   const newsarticles = thenews.map((article, i) => (
-<div className="newsfeedpostbox">
+  <div className="newsfeedpostbox">
     <h3>{article.title}</h3>
    
     <p>{article.postbody}</p>
     <h6>Posted <Moment fromNow>{article.postdate}</Moment>, on <Moment format ='MMM, DD, YYYY'>{article.postdate}</Moment>.</h6>
-    </div>
+    </div> 
   )) 
     return (
       <div className="home">
@@ -36,7 +36,7 @@ render() {
         </header>
         <div className="App-intro">
         <div className="home-whitebox">
-       <div> <p >
+       <div> <p>
           Hey guys, it's me, Chriswf again. 
           You might remember my last server (Broken Borders).
           If you're reading this, you're probably curious as to what I'm up to now.</p>
@@ -47,7 +47,7 @@ render() {
 <a href="https://discord.gg/qwsuvh" style={{  color: 'lightblue'}}> The new discord chat link, click here. </a> 
 </div>
 <div className="blockabovenewsfeed" />
-<h1> News Feed: </h1>
+<h1> News Feed: </h1> 
         {newsarticles}
 
 
