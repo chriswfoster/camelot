@@ -51,7 +51,7 @@ module.exports = {
     bcrypt.genSalt(saltRounds, function(err, salt) {
       bcrypt.hash(password, salt, function(err, hash) {
         connection.query(
-          `insert into webusers(username, password) values('${username}', '${hash}');`,
+          `insert into webusers(username, password, daocaccount) values('${username}', '${hash}', '[]');`,
           function(error, results, fields) {
             if (error) {
               if (error.code === "ER_DUP_ENTRY") {
@@ -99,5 +99,23 @@ module.exports = {
         }
       }
     )
+  },
+
+  addingFirstDaocAccount: (req, res, next) => {
+    const connection = req.app.get("connection")
+    const {username, daocaccount} = req.body
+    connection.query(`UPDATE webusers set daocaccount = JSON_MERGE ( daocaccount, '["${daocaccount}"]') where username = '${username}'`)
+
+
+
+
+
+
   }
+
+
+
+
+
+
 }
