@@ -1,12 +1,18 @@
 const express = require("express")
 const { json } = require("body-parser")
 const cors = require("cors")
-var bcrypt = require('bcrypt');
+var bcrypt = require("bcrypt")
 const session = require("express-session")
 const massive = require("massive")
 const passport = require("passport")
 const Auth0Strategy = require("passport-auth0")
-const {host, user, password, database, mysqlport} = require("../config.js").sqlInfo
+const {
+  host,
+  user,
+  password,
+  database,
+  mysqlport
+} = require("../config.js").sqlInfo
 const { secret } = require("./../config.js").session
 const { domain, clientID, clientSecret } = require("../config").auth0
 const port = process.env.PORT || 3069
@@ -16,7 +22,6 @@ app.use(json())
 app.use(cors())
 const controller = require("./controller/controller")
 
-
 app.use(
   session({
     secret,
@@ -24,8 +29,6 @@ app.use(
     saveUninitialized: false
   })
 )
-
-
 
 ////////////To maria db.
 var mysql = require("mysql")
@@ -40,13 +43,7 @@ var connection = mysql.createConnection({
 app.set("connection", connection)
 app.set("bcrypt", bcrypt)
 
-
-
-
-
-
 app.use(express.static(`${__dirname}/../build`))
-
 
 // app.use(session) // ATTACH SESSION
 // // console.log("initial", session) //Session exists at this point
@@ -60,9 +57,6 @@ app.use(
   })
 )
 
-
-
-
 app.get(
   "/login",
   passport.authenticate("auth0", {
@@ -70,30 +64,22 @@ app.get(
   })
 )
 
-
 app.get("/api/logout", function(req, res, next) {
   req.session.destroy()
   res.redirect("/login")
 })
 
-
 ///////// HERE IS THE DB FUNCTION
 app.get("/api/getthenews", controller.getNewsFeed)
 app.put("/api/searchmobs", controller.mobFinder)
 app.put("/api/searchplayersinv", controller.searchPlayersInventory)
-app.put('/api/loginuser', controller.loginUser)
-app.post('/api/registeruser', controller.registerUser)
+app.put("/api/loginuser", controller.loginUser)
+app.post("/api/registeruser", controller.registerUser)
 
 app.get("/api/me", function(req, res) {
   if (!req.session.user) return res.status(401)
   res.status(200).json(req.session.user)
 })
-
-
-
-
-
-
 
 const path = require("path")
 app.get("*", (req, res, next) => {

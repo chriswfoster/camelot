@@ -7,3 +7,7 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "camelot";
+  src: url('./Camelot Font/C_BOX_D.TTF') format("truetype"), url('./Camelot Font/C_BOX.TTF') format("truetype");
+}

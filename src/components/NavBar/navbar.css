@@ -105,13 +105,27 @@ height: 80px;
   }
   @-webkit-keyframes dda {
     0% {
-        transform: rotate(0deg);
+      transform: rotate(0deg);
+      width: 66px;
+      height: 60px;
+      left: 30%;
+  
+  }
+  50%{
+      background: red;
+width: 92px;
+height: 80px;
+  }
+ 
+   100% {
+       background: clear;
+      transform: rotate(360deg);
+      width: 66px;
+      height: 60px;
+      left: 36px;
+
     }
-   
-     100% {
-        transform: rotate(360deg);
-      }
-    }
+}
 
 
   /* Color/shape of burger icon bars */
