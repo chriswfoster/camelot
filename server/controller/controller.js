@@ -105,13 +105,30 @@ module.exports = {
     const connection = req.app.get("connection")
     const {username, daocaccount} = req.body
     connection.query(`UPDATE webusers set daocaccount = JSON_MERGE ( daocaccount, '["${daocaccount}"]') where username = '${username}'`)
+  },
+  
+  accountVerifySearch: (req, res, next) => {
+      const connection = req.app.get("connection")
+    const {daocaccountname} = req.body
 
-
-
-
-
-
-  }
+    connection.query(`SELECT * FROM account WHERE Name = '${daocaccountname}'`,
+    function(error, results, fields) {
+      if (error) {console.log(error)
+    } else if (results.length > 0) {
+        connection.query(`SELECT Name FROM dolcharacters WHERE AccountName = '${daocaccountname}'`,
+        function(error, results, fields) {
+            if (error) {
+                console.log(error)
+            } else if (results.length > 0) {
+                return res.status(200).send(results) }
+                else if (results.length < 1) {
+                    return res.status(200).send("No Characters")
+                }
+        })
+    }   else if (results.length < 1) {
+        return  res.status(200).send("UnknownUser")}
+  })
+},
 
 
 

@@ -57,8 +57,8 @@ class ViewPlayerInv extends Component {
             onChange={e => this.handleSearch(e.target.value)}
           />
           <button onClick={() => this.searchPlayers(this.state.searchTerm)}>
-            {" "}
-            Click to Search{" "}
+
+            Click to Search
           </button>
           {searchList.length > 0 ? (
             <div className="tablefontcolor">
