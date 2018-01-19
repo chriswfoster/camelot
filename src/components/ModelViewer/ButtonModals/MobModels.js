@@ -1,5 +1,8 @@
 import React, {Component} from'react'
 import axios from 'axios'
+
+import './buttonmodals.css'
+
 class MobModels extends Component{
 constructor(){
     super()
@@ -19,8 +22,8 @@ componentDidMount(){
 
     render(){
         return(
-            <div>
-                Mob Models
+            <div className="buttonmodalsizingandflex">
+                
                 </div>
         )
     }

@@ -70,6 +70,71 @@ font-size: 2em;
 font-weight: bold;
 }
 
+
+.modalsmainbox{
+    width: 90%;
+    height: 90%;
+    background-color: black;
+    color: white;
+    position: absolute;
+    z-index: 3;
+    border-color: white;
+    border-style: solid;
+    left: 5%;
+    top: 5%;
+    animation-name: searchboxmover;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: searchboxmover;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+.modalCloserX{
+position: absolute;
+ right: 2%;
+ bottom: 86%;
+ font-size: 3em;
+ animation-name: xrotator;
+ animation-duration: 0.5s;
+ animation-fill-mode: forwards;
+ animation-delay: 1s;
+ -webkit-animation-name: xrotator;
+ -webkit-animation-duration: 0.5s;
+ -webkit-animation-fill-mode: forwards;
+ -webkit-animation-delay: 1s;
+ cursor: pointer;
+ color: white;
+
+}
+
+@keyframes xrotator {
+   0%{ transform: rotate(0deg);
+   font-size: 3em;
+   }
+   50%{
+font-size: 5em;
+   }
+   100% { transform: rotate(405deg);
+    font-size: 3em;
+    }
+}
+@-webkit-keyframes searchboxmover {
+    0%{ transform: rotate(0deg);
+        font-size: 3em;
+        }
+        50%{
+     font-size: 5em;
+        }
+        100% { transform: rotate(405deg);
+         font-size: 3em;
+         }
+}
+
+.modalCloserX:hover{
+    color: red;
+  }
+
 @keyframes searchboxmover {
     0% {
         width: 50%;

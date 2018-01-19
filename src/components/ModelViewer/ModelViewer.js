@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import axios from 'axios'
+
 import ItemModels from './ButtonModals/ItemModels'
 import MobLocs from './ButtonModals/MobLocs'
 import MobModels from './ButtonModals/MobModels'
@@ -23,7 +23,12 @@ this.setState({displayModal: val})
     render(){
         return(
             <div className="modelviewbackground">
-            {this.state.displayModal}
+            {this.state.displayModal === null ? null
+            : <div className="modalsmainbox">{this.state.displayModal}
+
+            <p className="modalCloserX" onClick={() => this.setDisplayModal(null)}> +
+                </p>
+                </div>}
                 <div className="mainimagebackground">
                     <div className="itemmodelsmain maintilesflex">
                         <p className="modelviewertitles">Item Models</p>
@@ -35,7 +40,7 @@ this.setState({displayModal: val})
                         <div className="mobmodelsmain maintilesflex">
                             <p className="modelviewertitles">Mob Models</p>
                             <p>Search mob/npc models<br />Pics and ids.</p>
-                            <div className="modelviewersearchbutton"> Search Mobs </div>
+                            <div className="modelviewersearchbutton" onClick={() => this.setDisplayModal(<MobModels/>)}> Search Mobs </div>
                             </div>
 
                         <div className="questsmain maintilesflex">
