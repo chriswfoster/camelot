@@ -1,0 +1,48 @@
+.modelviewbackground{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.mainimagebackground{
+    background-image: url('./ItemSearchBackground.jpg');
+    background-size: 100% 100%;
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top: 5%;
+    position: absolute;
+    color: white;
+}
+.itemmodelsmain{
+    left: 20%;
+    top: 20%;
+    position: absolute;
+}
+.questsmain{
+   right: 18%;
+    top: 20%;
+    position: absolute;
+}
+.mobmodelsmain{
+    left: 20%;
+    bottom: 20%;
+    position: absolute; 
+}
+.mobinfomain{
+    right: 18%;
+    bottom: 20%;
+    position: absolute;
+}
+.modelviewersearchbutton{
+    border-style: solid;
+    border-color: black;
+    background-color: tan;
+    color: black;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.modelviewertitles{
+font-size: 2em;
+}

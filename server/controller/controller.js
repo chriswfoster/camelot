@@ -130,7 +130,16 @@ module.exports = {
   })
 },
 
-
+getItemModelList: (req, res, next) => {
+  const axios = req.app.get("axios")
+  var fs = require('./items.json');
+  res.status(200).send(fs)
+},
+getMobModelList: (req, res, next) => {
+  const axios = req.app.get("axios")
+  var fs = require('./items.json');
+  res.status(200).send(fs)
+}
 
 
 

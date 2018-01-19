@@ -1,6 +1,7 @@
 const express = require("express")
 const { json } = require("body-parser")
 const cors = require("cors")
+const axios = require("axios");
 var bcrypt = require("bcrypt")
 const session = require("express-session")
 const massive = require("massive")
@@ -42,6 +43,7 @@ var connection = mysql.createConnection({
 /////
 app.set("connection", connection)
 app.set("bcrypt", bcrypt)
+app.set("axios", axios)
 
 app.use(express.static(`${__dirname}/../build`))
 
@@ -69,8 +71,11 @@ app.get("/api/logout", function(req, res, next) {
   res.redirect("/login")
 })
 
+
 ///////// HERE IS THE DB FUNCTION
 app.get("/api/getthenews", controller.getNewsFeed)
+app.get("/api/itemlist", controller.getItemModelList)
+app.get("/api/moblist", controller.getMobModelList)
 app.put("/api/searchmobs", controller.mobFinder)
 app.put("/api/searchplayersinv", controller.searchPlayersInventory)
 app.put("/api/loginuser", controller.loginUser)
