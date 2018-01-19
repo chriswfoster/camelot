@@ -10,14 +10,16 @@ constructor(){
         searchTerm: "",
         searchList: [],
         showItems: 25,
-        lastArrayIndex: 0
+        lastArrayIndex: 0,
+        pageNumbers: [],
+        pageNumber: 1
     }
 }
 
     componentDidMount(){
         axios.get('/api/itemlist')
         .then(response => {
-             console.log(response.data)
+           
         this.setState({itemList: response.data})    
         })
     }
@@ -34,30 +36,39 @@ constructor(){
         const showItems = parseInt(this.state.showItems, 10)
         const {itemList} = this.state
         const thenewarray = []
-        const theresults = itemList.filter((item, i) => (item.Category === searchLower  || item.Name.toLowerCase().search(searchLower) > -1 ))
-        console.log(theresults.slice(0, showItems))
+        const pagenumbers = []
+        const theresults = itemList.filter((item, i) => (item.Category === searchLower  || item.Name.toLowerCase().search(searchLower) > -1 || item.ModelId === parseInt(searchLower, 10) ))
           while (theresults.length > 0){
         thenewarray.push(theresults.splice(0, showItems))
           }
-          this.setState({searchList: thenewarray})
-        
+        for(var j = 0; j < thenewarray.length; j++){
+            pagenumbers.push(j + 1)
+        }
+        this.setState({searchList: thenewarray, pageNumbers: pagenumbers,  pageNumber: 1})
     }
 
     clearSearch(){
-        this.setState({searchList: []})
+        this.setState({searchList: [],pageNumbers: []})
     }
 
     render(){
-        const {itemList, searchList} = this.state
-        console.log(searchList[0])
-        const viewListPos = searchList.length > 0 ?  searchList[0].map((item, i) => (
-            <div key={i}>   
-            <p>{item.Name}</p>
-                <p>{item.Category}</p>
-            <img />
-            <p>{item.ModelID}</p>
-            </div>
+        const {searchList, pageNumber, pageNumbers} = this.state
+        const pageNumbersList = pageNumbers.map((page, i) => (
+            <span key={i} style={page === pageNumber ? {color: 'white'}: {color: 'blue'}}className="pageNumberColors" onClick={()=> this.setState({pageNumber: page})}>{page}, </span>
+        ))
+        const viewList = searchList.length > 0 ?  searchList[pageNumber - 1].map((item, i) => (
+
+            <div key={i} className="viewlisttiles">   
+            <p style={{borderBottom: 'outset', borderColor: 'grey'}}>Name: {item.Name}</p>
+                <p style={{borderBottom: 'outset', borderColor: 'grey'}}>Category: {item.Category.length<1 ?
+                "N/A":
+                item.Category}</p>
+            <img src={`https://raw.githubusercontent.com/chriswfoster/DOLModels/master/DolModels/src/items/${item.ModelId}.jpg`} alt="If you see this, there is probably no image for this item."/>
+            <p style={{borderTop: 'inset', borderColor: 'grey'}}>Model ID: {item.ModelId}</p>
+            </div> 
+
         ) ): null
+     
         return(
             <div className="buttonmodalsizingandflex">
             <h1>Search for Item Models</h1>
@@ -65,24 +76,22 @@ constructor(){
             <div>
 
 <input onChange={(e)=> this.handleSearchTerm(e.target.value)} />
-
-<button onClick={() => console.log(this.state)}>Console Log</button>
 <button onClick={() => this.ultimateSearch(this.state.searchTerm)}>Search</button>
 <button onClick={() => this.clearSearch()}>Clear Search Content</button>
 
 
 <select defaultValue="25" onChange={(e) => this.handleSearchQuantity(e.target.value)}>
-    <option value="25">25</option>
-    <option value="50">50</option>
-    <option value="100">100</option>
+    <option value="25">25 Results Per Page</option>
+    <option value="50">50 Results Per Page</option>
+    <option value="100">100 Results Per Page</option>
 </select>
-
-<div>
-{viewListPos}
-
-    </div>
+{pageNumbersList.length > 0 ? <div>Page: {pageNumbersList}</div>  : null }
                 </div>
+                <div className="viewlistflex">
+{viewList}
 
+{pageNumbersList.length > 0 ? <div>Page: {pageNumbersList}</div>  : null }
+    </div>
 
                 </div>
         )

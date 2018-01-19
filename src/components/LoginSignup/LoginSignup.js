@@ -68,7 +68,7 @@ this.setState({registerPassword: val})
 
 
     render(props){
-        const {loginUser} = this.props
+      
 
         return(
             

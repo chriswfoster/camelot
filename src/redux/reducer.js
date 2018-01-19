@@ -1,4 +1,3 @@
-import axios from 'axios'
 
 //action types
 const LOAD_USER='LOAD_USER'

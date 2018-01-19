@@ -32,7 +32,7 @@
     position: absolute;
 }
 .questsmain{
-   right: 10%;
+   right: 15%;
     top: 10%;
     position: absolute;
 }
@@ -42,7 +42,7 @@
     position: absolute; 
 }
 .mobinfomain{
-    right: 12%;
+    right: 15%;
     bottom: 12%;
     position: absolute;
 }
@@ -63,6 +63,11 @@
     border-radius: 10px;
     cursor: pointer;
 }
+.modelviewersearchbutton:hover{
+    color: blue;
+    background: rgb(255, 255, 255);
+}
+
 .modelviewertitles{
     font-family: "Camelot", sans-serif;
     color: rgb(255, 0, 0);

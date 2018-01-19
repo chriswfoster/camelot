@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { stack as Menu } from "react-burger-menu"
-import menu from "./menu.png"
 import "./navbar.css"
 
 class NavBar extends Component {
@@ -13,7 +12,7 @@ class NavBar extends Component {
   render() {
     return (
       <div className="navbarbackground">
-        <Menu customBurgerIcon={<img src={require("./menu.png")} />}>
+        <Menu customBurgerIcon={<img src={require("./menu.png")} alt="Button icon"/>}>
           <div> Site Navigation: </div>
           <p>
             <Link

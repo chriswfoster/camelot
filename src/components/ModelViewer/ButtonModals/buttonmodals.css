@@ -9,3 +9,34 @@
     align-content: stretch;
     overflow: scroll;
 }
+
+.viewlistflex{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+    align-content: stretch;
+    width: 100%;
+
+}
+
+.viewlisttiles{
+    width: 25%;
+    min-height: 25%;
+    border-style: solid;
+    border-color: blue;
+    margin: 2%;
+ 
+}
+.viewlisttiles img{
+height: 217px;
+min-height: 217px;
+}
+
+.pageNumberColors{
+    cursor: pointer;
+}
+.pageNumberColors:hover{
+ background-color: white;
+}

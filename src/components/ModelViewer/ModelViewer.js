@@ -44,13 +44,13 @@ this.setState({displayModal: val})
                             </div>
 
                         <div className="questsmain maintilesflex">
-                            <p className="modelviewertitles">Quest Location and Rewards</p>
+                            <p className="modelviewertitles">Quest Location<br /> and Rewards</p>
                             <p> (Native to Chriswf's server only)<br />(Not functioning yet)</p>
                             <div className="modelviewersearchbutton">Search Quests </div>
                             </div>
 
                             <div className="mobinfomain maintilesflex">
-                                <p className="modelviewertitles">Mob Types and Locations</p>
+                                <p className="modelviewertitles">Mob Types <br />and Locations</p>
                                 <p> (Native to Chriswf's server only)<br /> (Also not functioning yet) </p>
                                 <div className="modelviewersearchbutton">Search Mob Types</div>
                                 </div>

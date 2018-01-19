@@ -95,7 +95,7 @@ verifyCharacterThree(val){
     return (
       <div className="yournodebackground">
         <div className="signanimator">
-          <img src={hangingsign} />
+          <img src={hangingsign} alt="Hanging sign image"/>
           {panelview === "enteraccounts" ?
 
 <div className="signmaintext"> 
