@@ -43,21 +43,8 @@ class NavBar extends Component {
                 textAlign: "center"
               }}
             >
-              Model Viewer for Mobs and Items
+              Browse Database for Model IDs, items, quests, and mobs
             </Link></p>
-            <p>
-            <Link
-              to="/mobbrowser"
-              style={{
-                textDecoration: "none",
-                color: "lightblue",
-                textAlign: "center"
-              }}
-            >
-
-              Browse Database for Mobs (locations coming soon)
-            </Link>
-          </p>
           <p>
             <Link
               to="/viewplayersinv"

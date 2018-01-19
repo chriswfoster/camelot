@@ -51,8 +51,8 @@ this.setState({displayModal: val})
 
                             <div className="mobinfomain maintilesflex">
                                 <p className="modelviewertitles">Mob Types <br />and Locations</p>
-                                <p> (Native to Chriswf's server only)<br /> (Also not functioning yet) </p>
-                                <div className="modelviewersearchbutton">Search Mob Types</div>
+                                <p> (Native to Chriswf's server only)<br /> (Partial functionality) </p>
+                                <div className="modelviewersearchbutton" onClick={() => this.setDisplayModal(<MobLocs />)}>Search Mob Types</div>
                                 </div>
                            
 
