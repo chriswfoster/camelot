@@ -32,5 +32,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3069"
+  "proxy": "http://localhost:3069",
+  "homepage": "http://daoc.chriswf.com"
 }
