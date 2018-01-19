@@ -7,6 +7,7 @@ import MobBrowser from './components/MobBrowser/MobBrowser'
 import ViewPlayerInv from './components/ViewPlayerInv/ViewPlayerInv.js'
 import LoginSignup from './components/LoginSignup/LoginSignup'
 import YourNode from './components/YourNode/YourNode'
+import ModelViewer from './components/ModelViewer/ModelViewer'
 
 import store from './store'
 
@@ -19,6 +20,7 @@ export default(
     <Route path="/mobbrowser" component={MobBrowser} />
     <Route path="/loginsignup" component={LoginSignup} />
     <Route path="/yournode" component={YourNode} />
+    <Route path="/modelviewer" component={ModelViewer} />
         
         </Switch>
     </Provider>
