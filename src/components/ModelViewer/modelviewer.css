@@ -13,26 +13,46 @@
     top: 5%;
     position: absolute;
     color: white;
+    position: relative;
+    animation-name: searchboxmover;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: searchboxmover;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
 }
+
+
+
+
+
 .itemmodelsmain{
-    left: 20%;
-    top: 20%;
+    left: 15%;
+    top: 10%;
     position: absolute;
 }
 .questsmain{
-   right: 18%;
-    top: 20%;
+   right: 10%;
+    top: 10%;
     position: absolute;
 }
 .mobmodelsmain{
-    left: 20%;
-    bottom: 20%;
+    left: 18%;
+    bottom: 12%;
     position: absolute; 
 }
 .mobinfomain{
-    right: 18%;
-    bottom: 20%;
+    right: 12%;
+    bottom: 12%;
     position: absolute;
+}
+.maintilesflex{
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
 }
 .modelviewersearchbutton{
     border-style: solid;
@@ -44,5 +64,48 @@
     cursor: pointer;
 }
 .modelviewertitles{
+    font-family: "Camelot", sans-serif;
+    color: rgb(255, 0, 0);
 font-size: 2em;
+font-weight: bold;
 }
+
+@keyframes searchboxmover {
+    0% {
+        width: 50%;
+        height: 50%;
+        left: 25%;
+    top: 25%;
+    }
+    75% {
+        width: 95%;
+        height: 95%;
+        left: 2.5%;
+    top: 2.5%;
+    }
+  
+    100% {
+        width: 90%;
+        height: 90%;
+    }
+  }
+  @-webkit-keyframes searchboxmover {
+    0% {
+        width: 50%;
+        height: 50%;
+        left: 25%;
+    top: 25%;
+    }
+    75% {
+        width: 95%;
+        height: 95%;
+        left: 2.5%;
+        top: 2.5%;
+    }
+  
+    100% {
+        width: 90%;
+        height: 90%;
+    }
+  }
+  

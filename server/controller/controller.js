@@ -137,7 +137,7 @@ getItemModelList: (req, res, next) => {
 },
 getMobModelList: (req, res, next) => {
   const axios = req.app.get("axios")
-  var fs = require('./items.json');
+  var fs = require('./mobs.json');
   res.status(200).send(fs)
 }
 
