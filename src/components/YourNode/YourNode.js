@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Redirect } from "react-router"
-
+import AccountTool from '../AccountTool/AccountTool'
 import axios from "axios"
 
 import hangingsign from "./hangingsign.png"
@@ -19,7 +19,8 @@ class YourNode extends Component {
       accountCharacters:[],
       firstCharacter: "Unverified",
       secondCharacter: "Unverified",
-      thirdCharacter: "Unverified"
+      thirdCharacter: "Unverified",
+      redirect: "no redirect"
     }
   }
 
@@ -104,7 +105,7 @@ verifyCharacterThree(val){
             {secondCharacter === "Verified!" ? <p>{secondCharacter}</p> : <input placeholder=" 2nd Character Name" onChange={(e) => this.verifyCharacterTwo(e.target.value)}/>}
             {thirdCharacter === "Verified!" ? <p>{thirdCharacter}</p> :<input placeholder=" 3rd Character Name" onChange={(e) => this.verifyCharacterThree(e.target.value)}/>}
             {firstCharacter === "Verified!" & secondCharacter === "Verified!" & thirdCharacter === "Verified!"?
-            <button>Submit</button>: <p>Enter 3 characters to continue</p>}
+            <button onClick={() => this.setState({noorredirect: <Redirect to="/accounttool"/>})}>Submit</button>: <p>Enter 3 characters to continue</p>}
 
               </div>:
               

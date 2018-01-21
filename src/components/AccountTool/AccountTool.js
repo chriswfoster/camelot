@@ -6,9 +6,10 @@ class AccountTool extends Component{
 
     render(){
         return(
-            <div>
-                Nothing here yet.
+            <div style={{color: 'white'}}>
+                Nothing here yet. But coming soon!
                 </div>
         )
     }
 }
+export default AccountTool
