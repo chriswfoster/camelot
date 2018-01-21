@@ -21,7 +21,8 @@ class Home extends Component {
 
   render() {
     const { thenews } = this.state
-    const newsarticles = thenews.map((article, i) => (
+    let newsarticles;
+   {thenews.constructor === Array ? newsarticles = thenews.map((article, i) => (
       <div className="newsfeedpostbox" key={i}>
         <h3>{article.title}</h3>
 
@@ -31,7 +32,7 @@ class Home extends Component {
           <Moment format="MMM, DD, YYYY">{article.postdate}</Moment>.
         </h6>
       </div>
-    ))
+    )) : null}
     return (
       <div className="home">
         <header className="App-header">
