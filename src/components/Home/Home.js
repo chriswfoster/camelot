@@ -25,7 +25,6 @@ class Home extends Component {
    {thenews.constructor === Array ? newsarticles = thenews.map((article, i) => (
       <div className="newsfeedpostbox" key={i}>
         <h3>{article.title}</h3>
-
         <p>{article.postbody}</p>
         <h6>
           Posted <Moment fromNow>{article.postdate}</Moment>, on{" "}

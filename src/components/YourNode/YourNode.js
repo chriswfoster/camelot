@@ -101,9 +101,9 @@ verifyCharacterThree(val){
 
 <div className="signmaintext"> 
             <p>Type the names of 3 different characters on your account. This is account verification!</p>
-            {firstCharacter === "Verified!" ? <p>{firstCharacter}</p> : <input placeholder=" 1st Character Name" onChange={(e) => this.verifyCharacterOne(e.target.value)}/>}
-            {secondCharacter === "Verified!" ? <p>{secondCharacter}</p> : <input placeholder=" 2nd Character Name" onChange={(e) => this.verifyCharacterTwo(e.target.value)}/>}
-            {thirdCharacter === "Verified!" ? <p>{thirdCharacter}</p> :<input placeholder=" 3rd Character Name" onChange={(e) => this.verifyCharacterThree(e.target.value)}/>}
+            {firstCharacter === "Verified!" ? <div>{firstCharacter}</div> : <input key={'1staccount'} autoFocus placeholder=" 1st Character Name" onChange={(e) => this.verifyCharacterOne(e.target.value)}/>}
+            {secondCharacter === "Verified!" ? <div>{secondCharacter}</div> : <input key={'2ndaccount'} ref={input => firstCharacter === "Verified!" ?  input && input.focus() : null} placeholder=" 2nd Character Name" onChange={(e) => this.verifyCharacterTwo(e.target.value)}/>}
+            {thirdCharacter === "Verified!" ? <div>{thirdCharacter}</div> :<input key={'3rdaccount'} ref={input => secondCharacter === "Verified!" ?  input && input.focus() : null} placeholder=" 3rd Character Name" onChange={(e) => this.verifyCharacterThree(e.target.value)}/>}
             {firstCharacter === "Verified!" & secondCharacter === "Verified!" & thirdCharacter === "Verified!"?
             <button onClick={() => this.setState({noorredirect: <Redirect to="/accounttool"/>})}>Submit</button>: <p>Enter 3 characters to continue</p>}
 
@@ -117,7 +117,7 @@ verifyCharacterThree(val){
             <p>
                 Type the name of your DAoC account.
                 </p>
-            <input placeholder="DAoC Account Here" onChange={(e) => this.accountTyper(e.target.value)}/>   <div className="accountcreatenextbutton" onClick={()=> this.accountVerifySearch(this.state.typedaccounttext)}> NEXT → </div>
+            <input placeholder="DAoC Account Here" autoFocus onChange={(e) => this.accountTyper(e.target.value)} onKeyPress={(e) => e.key === 'Enter' ? this.accountVerifySearch(this.state.typedaccounttext) : null}/>   <div className="accountcreatenextbutton" onClick={()=> this.accountVerifySearch(this.state.typedaccounttext)}> NEXT → </div>
             </div> :
               panelview === "false" ? <div className="signmaintext">
             <p>
