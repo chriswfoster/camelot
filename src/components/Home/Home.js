@@ -53,7 +53,7 @@ class Home extends Component {
                 ton of tricks and ideas (lots of ideas for a new server).
               </p>
               <p>
-                Here's my discord (<b style={{ color: "lightblue" }}>qwsuvh</b>),
+                Here's my discord (<b style={{ color: "lightblue" }}>TCkYBVx</b>),
                 you're free to drop by for a hello, drop ideas in the idea
                 channel, etc.
               </p>
