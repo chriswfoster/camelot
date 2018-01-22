@@ -58,7 +58,7 @@ class Home extends Component {
                 channel, etc.
               </p>
               <a
-                href="https://discord.gg/qwsuvh"
+                href="https://discord.gg/TCkYBVx"
                 style={{ color: "lightblue" }}
               >
                 {" "}
