@@ -3,6 +3,7 @@ module.exports = {
     const connection = req.app.get("connection")
     const { search } = req.body
 
+    connection.connect()
     connection.query(
       `SELECT DISTINCT Name, Level FROM mob WHERE Name LIKE '%${search}%' ORDER BY Name LIMIT 100`,
       function(error, results, fields) {
@@ -11,12 +12,14 @@ module.exports = {
         return res.status(200).send(results)
       }
     )
+    connection.end()
   },
 
   searchPlayersInventory: (req, res, next) => {
     const connection = req.app.get("connection")
     const { search } = req.body
 
+    connection.connect()
     connection.query(
       `SELECT dc.Name as PlayerName, tp.Name as ItemName, nv.Count  from inventory nv JOIN itemtemplate tp ON nv.ITemplate_Id = tp.Id_nb JOIN dolcharacters dc ON dc.DOLCharacters_id = nv.OwnerID WHERE dc.Name LIKE '%${search}%' ORDER BY dc.Name asc, tp.Name LIMIT 300`,
       function(error, results, fields) {
@@ -25,12 +28,14 @@ module.exports = {
         return res.status(200).send(results)
       }
     )
+    connection.end()
   },
 
   getNewsFeed: (req, res, next) => {
     const connection = req.app.get("connection")
     const { search } = req.body
 
+    connection.connect()
     connection.query(`SELECT * FROM newsfeed ORDER BY post_id DESC`, function(
       error,
       results,
@@ -40,6 +45,7 @@ module.exports = {
 
       return res.status(200).send(results)
     })
+    connection.end()
   },
 
   registerUser: (req, res, next) => {
@@ -48,6 +54,7 @@ module.exports = {
     const { username, password } = req.body
     const saltRounds = 10
 
+    connection.connect()
     bcrypt.genSalt(saltRounds, function(err, salt) {
       bcrypt.hash(password, salt, function(err, hash) {
         connection.query(
@@ -74,11 +81,14 @@ module.exports = {
         )
       })
     })
+    connection.end()
   },
   loginUser: (req, res, next) => {
     const connection = req.app.get("connection")
     const bcrypt = req.app.get("bcrypt")
     const { username, password } = req.body
+
+    connection.connect()
     connection.query(
       `SELECT * from webusers WHERE username = '${username}'`,
       function(error, results, fields) {
@@ -99,49 +109,58 @@ module.exports = {
         }
       }
     )
+    connection.end()
   },
 
   addingFirstDaocAccount: (req, res, next) => {
     const connection = req.app.get("connection")
-    const {username, daocaccount} = req.body
-    connection.query(`UPDATE webusers set daocaccount = JSON_MERGE ( daocaccount, '["${daocaccount}"]') where username = '${username}'`)
+    const { username, daocaccount } = req.body
+
+    connection.connect()
+    connection.query(
+      `UPDATE webusers set daocaccount = JSON_MERGE ( daocaccount, '["${daocaccount}"]') where username = '${username}'`
+    )
   },
-  
+
   accountVerifySearch: (req, res, next) => {
-      const connection = req.app.get("connection")
-    const {daocaccountname} = req.body
+    const connection = req.app.get("connection")
+    const { daocaccountname } = req.body
 
-    connection.query(`SELECT * FROM account WHERE Name = '${daocaccountname}'`,
-    function(error, results, fields) {
-      if (error) {console.log(error)
-    } else if (results.length > 0) {
-        connection.query(`SELECT Name FROM dolcharacters WHERE AccountName = '${daocaccountname}'`,
-        function(error, results, fields) {
-            if (error) {
+    connection.connect()
+    connection.query(
+      `SELECT * FROM account WHERE Name = '${daocaccountname}'`,
+      function(error, results, fields) {
+        if (error) {
+          console.log(error)
+        } else if (results.length > 0) {
+          connection.query(
+            `SELECT Name FROM dolcharacters WHERE AccountName = '${daocaccountname}'`,
+            function(error, results, fields) {
+              if (error) {
                 console.log(error)
-            } else if (results.length > 0) {
-                return res.status(200).send(results) }
-                else if (results.length < 1) {
-                    return res.status(200).send("No Characters")
-                }
-        })
-    }   else if (results.length < 1) {
-        return  res.status(200).send("UnknownUser")}
-  })
-},
+              } else if (results.length > 0) {
+                return res.status(200).send(results)
+              } else if (results.length < 1) {
+                return res.status(200).send("No Characters")
+              }
+            }
+          )
+        } else if (results.length < 1) {
+          return res.status(200).send("UnknownUser")
+        }
+      }
+    )
+    connection.end()
+  },
 
-getItemModelList: (req, res, next) => {
-  const axios = req.app.get("axios")
-  var fs = require('./items.json');
-  res.status(200).send(fs)
-},
-getMobModelList: (req, res, next) => {
-  const axios = req.app.get("axios")
-  var fs = require('./mobs.json');
-  res.status(200).send(fs)
-}
-
-
-
-
+  getItemModelList: (req, res, next) => {
+    const axios = req.app.get("axios")
+    var fs = require("./items.json")
+    res.status(200).send(fs)
+  },
+  getMobModelList: (req, res, next) => {
+    const axios = req.app.get("axios")
+    var fs = require("./mobs.json")
+    res.status(200).send(fs)
+  }
 }
