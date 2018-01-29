@@ -46,6 +46,31 @@ app.set("connection", connection)
 app.set("bcrypt", bcrypt)
 app.set("axios", axios)
 
+
+
+function handleDisconnect(connection) {
+  connection.on('error', function(err) {
+    if (!err.fatal) {
+      return;
+    }
+
+    if (err.code !== 'PROTOCOL_CONNECTION_LOST') {
+      throw err;
+    }
+
+    console.log('Re-connecting lost connection: ' + err.stack);
+
+    connection = mysql.createConnection(connection.config);
+    handleDisconnect(connection);
+    connection.connect();
+  });
+}
+
+handleDisconnect(connection);
+
+
+
+
 app.use(express.static(`${__dirname}/../build`))
 
 // app.use(session) // ATTACH SESSION
