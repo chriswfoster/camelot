@@ -3,7 +3,6 @@ module.exports = {
     const connection = req.app.get("connection")
     const { search } = req.body
 
-    connection.connect()
     connection.query(
       `SELECT DISTINCT Name, Level FROM mob WHERE Name LIKE '%${search}%' ORDER BY Name LIMIT 100`,
       function(error, results, fields) {
@@ -12,14 +11,12 @@ module.exports = {
         return res.status(200).send(results)
       }
     )
-    connection.end()
   },
 
   searchPlayersInventory: (req, res, next) => {
     const connection = req.app.get("connection")
     const { search } = req.body
 
-    connection.connect()
     connection.query(
       `SELECT dc.Name as PlayerName, tp.Name as ItemName, nv.Count  from inventory nv JOIN itemtemplate tp ON nv.ITemplate_Id = tp.Id_nb JOIN dolcharacters dc ON dc.DOLCharacters_id = nv.OwnerID WHERE dc.Name LIKE '%${search}%' ORDER BY dc.Name asc, tp.Name LIMIT 300`,
       function(error, results, fields) {
@@ -28,14 +25,12 @@ module.exports = {
         return res.status(200).send(results)
       }
     )
-    connection.end()
   },
 
   getNewsFeed: (req, res, next) => {
     const connection = req.app.get("connection")
     const { search } = req.body
 
-    connection.connect()
     connection.query(`SELECT * FROM newsfeed ORDER BY post_id DESC`, function(
       error,
       results,
@@ -45,7 +40,6 @@ module.exports = {
 
       return res.status(200).send(results)
     })
-    connection.end()
   },
 
   registerUser: (req, res, next) => {
@@ -54,7 +48,6 @@ module.exports = {
     const { username, password } = req.body
     const saltRounds = 10
 
-    connection.connect()
     bcrypt.genSalt(saltRounds, function(err, salt) {
       bcrypt.hash(password, salt, function(err, hash) {
         connection.query(
@@ -81,14 +74,12 @@ module.exports = {
         )
       })
     })
-    connection.end()
   },
   loginUser: (req, res, next) => {
     const connection = req.app.get("connection")
     const bcrypt = req.app.get("bcrypt")
     const { username, password } = req.body
 
-    connection.connect()
     connection.query(
       `SELECT * from webusers WHERE username = '${username}'`,
       function(error, results, fields) {
@@ -109,7 +100,6 @@ module.exports = {
         }
       }
     )
-    connection.end()
   },
 
   addingFirstDaocAccount: (req, res, next) => {
@@ -126,7 +116,6 @@ module.exports = {
     const connection = req.app.get("connection")
     const { daocaccountname } = req.body
 
-    connection.connect()
     connection.query(
       `SELECT * FROM account WHERE Name = '${daocaccountname}'`,
       function(error, results, fields) {
@@ -150,7 +139,6 @@ module.exports = {
         }
       }
     )
-    connection.end()
   },
 
   getItemModelList: (req, res, next) => {
