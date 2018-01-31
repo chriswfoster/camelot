@@ -33,13 +33,13 @@ app.use(
 
 ////////////To maria db.
 var mysql = require("mysql")
-var connection = mysql.createConnection({
+var connection = mysql.createPool({
   host: host,
   user: user,
   password: password,
   database: database,
   port: mysqlport,
-  minConnections: 1
+  connectionLimit: 15
 })
 /////
 app.set("connection", connection)
