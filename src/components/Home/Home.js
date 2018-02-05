@@ -43,17 +43,10 @@ class Home extends Component {
             <div>
               {" "}
               <p>
-                Hey guys, it's me, Chriswf again. You might remember my last
-                server (Broken Borders). If you're reading this, you're probably
-                curious as to what I'm up to now.
+                Hey everyone, remember to join the discord. I'll try to post patch notes here as well as in discord.
               </p>
               <p>
-                Long story short, I'm a full stack web developer now. More
-                importantly, I picked up a couple programmign languages, and a
-                ton of tricks and ideas (lots of ideas for a new server).
-              </p>
-              <p>
-                Here's my discord (<b style={{ color: "lightblue" }}>TCkYBVx</b>),
+               Here's my discord (<b style={{ color: "lightblue" }}>TCkYBVx</b>),
                 you're free to drop by for a hello, drop ideas in the idea
                 channel, etc.
               </p>
