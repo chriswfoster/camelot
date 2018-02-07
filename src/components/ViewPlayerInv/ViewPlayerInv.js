@@ -55,6 +55,7 @@ class ViewPlayerInv extends Component {
             placeholder="Type Player Name Here:"
             type="text"
             onChange={e => this.handleSearch(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' ? this.searchPlayers(this.state.searchTerm) : null}
           />
           <button onClick={() => this.searchPlayers(this.state.searchTerm)}>
 
