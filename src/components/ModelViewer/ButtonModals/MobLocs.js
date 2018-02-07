@@ -45,6 +45,7 @@ class MobLocs extends Component{
                 placeholder="Search mob name here:"
                 type="text"
                 onChange={e => this.handleSearch(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' ? this.searchMobs(this.state.searchTerm) : null}
               />
               <button onClick={() => this.searchMobs(this.state.searchTerm)}>
                 {" "}
