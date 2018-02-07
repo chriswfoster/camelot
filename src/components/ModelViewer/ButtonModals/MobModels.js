@@ -73,7 +73,7 @@ render(){
 
         <div>
 
-<input onChange={(e)=> this.handleSearchTerm(e.target.value)} />
+<input onChange={(e)=> this.handleSearchTerm(e.target.value)} onKeyPress={(e) => e.key === 'Enter' ? this.ultimateSearch(this.state.searchTerm) : null} />
 <button onClick={() => this.ultimateSearch(this.state.searchTerm)}>Search</button>
 <button onClick={() => this.clearSearch()}>Clear Search Content</button>
 
