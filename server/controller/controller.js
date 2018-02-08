@@ -106,7 +106,6 @@ module.exports = {
     const connection = req.app.get("connection")
     const { username, daocaccount } = req.body
 
-    connection.connect()
     connection.query(
       `UPDATE webusers set daocaccount = JSON_MERGE ( daocaccount, '["${daocaccount}"]') where username = '${username}'`
     )

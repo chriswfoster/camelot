@@ -104,7 +104,11 @@ class YourNode extends Component {
       this.setState({ thirdCharacter: "Verified!" })
     }
   }
-  redirectToCharSelect() {
+  redirectToCharSelect(account) {
+    axios.put("/api/addGameAccountToWebAccount", {
+      daocaccount: account,
+      username: this.props.user.username
+    })
     this.setState({ redirect: <Redirect to="/characterselect" /> })
   }
 
@@ -170,7 +174,7 @@ class YourNode extends Component {
               {(firstCharacter === "Verified!") &
               (secondCharacter === "Verified!") &
               (thirdCharacter === "Verified!") ? (
-                <button onClick={() => this.redirectToCharSelect()}>
+                <button onClick={() => this.redirectToCharSelect(this.state.typedaccounttext)}>
                   Submit
                 </button>
               ) : (
