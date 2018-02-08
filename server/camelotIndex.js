@@ -107,6 +107,7 @@ app.put("/api/searchplayersinv", controller.searchPlayersInventory)
 app.put("/api/loginuser", controller.loginUser)
 app.put('/api/accountverifysearch', controller.accountVerifySearch)
 app.put("/api/addGameAccountToWebAccount", controller.addingFirstDaocAccount)
+app.put('/api/getUserInfo', controller.getUserInfo)
 app.post("/api/registeruser", controller.registerUser)
 
 app.get("/api/me", function(req, res) {

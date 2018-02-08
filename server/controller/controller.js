@@ -140,6 +140,21 @@ module.exports = {
     )
   },
 
+  getUserInfo: (req, res, next) => {
+    const connection = req.app.get("connection")
+    const {username} = req.body
+
+    connection.query(
+      `SELECT * FROM webusers where username = '${username}'`,
+      function(error, results, fields) {
+        if (error) {
+          console.log(error)
+        }else return res.status(200).send(results)
+      }
+    )
+
+  },
+
   getItemModelList: (req, res, next) => {
     const axios = req.app.get("axios")
     var fs = require("./items.json")
