@@ -109,7 +109,7 @@ class YourNode extends Component {
       daocaccount: account,
       username: this.props.user.username
     })
-    this.setState({ redirect: <Redirect to="/characterselect" /> })
+    this.setState({ redirect: <Redirect to="/AccountTool" /> })
   }
 
   render(props) {
@@ -121,7 +121,7 @@ class YourNode extends Component {
       secondCharacter,
       thirdCharacter
     } = this.state
-    console.log(user, redirect)
+
     return (
       <div className="yournodebackground">
         <div className="signanimator">
@@ -174,7 +174,11 @@ class YourNode extends Component {
               {(firstCharacter === "Verified!") &
               (secondCharacter === "Verified!") &
               (thirdCharacter === "Verified!") ? (
-                <button onClick={() => this.redirectToCharSelect(this.state.typedaccounttext)}>
+                <button
+                  onClick={() =>
+                    this.redirectToCharSelect(this.state.typedaccounttext)
+                  }
+                >
                   Submit
                 </button>
               ) : (
