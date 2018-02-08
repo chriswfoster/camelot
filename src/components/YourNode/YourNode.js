@@ -20,7 +20,7 @@ class YourNode extends Component {
       firstCharacter: "Unverified",
       secondCharacter: "Unverified",
       thirdCharacter: "Unverified",
-      redirect: "no redirect"
+      redirect: null
     }
   }
 
@@ -104,16 +104,20 @@ class YourNode extends Component {
       this.setState({ thirdCharacter: "Verified!" })
     }
   }
+  redirectToCharSelect() {
+    this.setState({ redirect: <Redirect to="/characterselect" /> })
+  }
 
   render(props) {
     const { user } = this.props
     const {
+      redirect,
       panelview,
       firstCharacter,
       secondCharacter,
       thirdCharacter
     } = this.state
-    console.log(user)
+    console.log(user, redirect)
     return (
       <div className="yournodebackground">
         <div className="signanimator">
@@ -124,6 +128,7 @@ class YourNode extends Component {
                 Type the names of 3 different characters on your account. This
                 is account verification!
               </p>
+
               {firstCharacter === "Verified!" ? (
                 <div>{firstCharacter}</div>
               ) : (
@@ -165,17 +170,11 @@ class YourNode extends Component {
               {(firstCharacter === "Verified!") &
               (secondCharacter === "Verified!") &
               (thirdCharacter === "Verified!") ? (
-                <button
-                  onClick={() =>
-                    this.setState({
-                      noorredirect: <Redirect to="/accounttool" />
-                    })
-                  }
-                >
+                <button onClick={() => this.redirectToCharSelect()}>
                   Submit
                 </button>
               ) : (
-                <p>Enter 3 characters to continue</p>
+                <p>Enter 3 character's names to continue</p>
               )}
             </div>
           ) : panelview === "accountadd" ? (
@@ -217,6 +216,7 @@ class YourNode extends Component {
             <div> N/A </div>
           )}
         </div>
+        {this.state.redirect}
       </div>
     )
   }
