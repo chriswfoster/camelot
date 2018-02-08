@@ -27,7 +27,7 @@ class YourNode extends Component {
   componentDidMount() {
     this.props.user.daocaccount
       ? this.props.user.daocaccount.length > 2
-        ? this.setState({ panelview: "true" })
+        ? this.setState({ panelview: "true", redirect: <Redirect to="accounttool" /> })
         : this.setState({ panelview: "false" })
       : this.setState({ panelview: "false" })
   }

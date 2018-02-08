@@ -14,18 +14,23 @@ class AccountTool extends Component {
       .put("getUserInfo", {
         username: user.username
       })
-      .then(response => this.props.loadUserInfo(response.data))
+      .then(response => console.log(response)
+
+    )
   }
 
   render() {
     const { daocaccount } = this.props.user
-    const accountlist = daocaccount
-      ? daocaccount.map((account, i) => <p>{account}</p>)
+    const parsedaccounts = daocaccount ? JSON.parse(daocaccount) : null
+    const accountlist = daocaccount ? parsedaccounts.map((account, i) => <p>{account}</p>)
       : null
 
     return (
       <div style={{ color: "white" }}>
-        <div>{accountlist}</div>
+        <div>Which account do you want access to?
+        {accountlist ? accountlist : null}
+        
+        </div>
       </div>
     )
   }
