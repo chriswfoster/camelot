@@ -8,7 +8,9 @@ import "./accounttool.css"
 class AccountTool extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      currentView: "accountSelector"
+    }
   }
 
   componentDidMount() {
@@ -23,7 +25,6 @@ class AccountTool extends Component {
         this.props.loadUserInfo(response.data)
       })
   }
-  accountToAccess() {}
 
   render() {
     const { selectedAccount } = this.props
@@ -42,9 +43,11 @@ class AccountTool extends Component {
 
     return (
       <div style={{ color: "white" }} className="accounttoolbackground">
-        <div className = "accountlistorganizer">
-          Which account do you want access to?
-          {accountlist ? accountlist : null}
+        <div className={this.state.currentView}>
+          <div className="accountlistorganizer">
+            Which account do you want access to?
+            {accountlist ? accountlist : null}
+          </div>
         </div>
       </div>
     )
