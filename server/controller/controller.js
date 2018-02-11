@@ -142,17 +142,17 @@ module.exports = {
 
   getUserInfo: (req, res, next) => {
     const connection = req.app.get("connection")
-    const {username} = req.body
+    const { username } = req.body
 
     connection.query(
       `SELECT * FROM webusers where username = '${username}'`,
       function(error, results, fields) {
         if (error) {
           console.log(error)
-        }else return res.status(200).send(results)
+        } else return console.log(results) & res.status(200).send(results)
+        c
       }
     )
-
   },
 
   getItemModelList: (req, res, next) => {
