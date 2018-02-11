@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { loadUserInfo } from "../../redux/reducer"
+import { loadUserInfo, selectedAccount } from "../../redux/reducer"
 import axios from "axios"
 class AccountTool extends Component {
   constructor(props) {
@@ -23,10 +23,11 @@ class AccountTool extends Component {
   accountToAccess() {}
 
   render() {
-    const { daocaccount } = this.props.user
+      const {selectedAccount} = this.props;
+    const { daocaccount } = this.props.user;
     const parsedaccounts = daocaccount ? JSON.parse(daocaccount) : null
     const accountlist = daocaccount
-      ? parsedaccounts.map((account, i) => <p>{account}</p>)
+      ? parsedaccounts.map((account, i) => <p onClick={()=> selectedAccount(account)}>{account}</p>)
       : null
 
     return (
@@ -41,5 +42,5 @@ class AccountTool extends Component {
 }
 const mapStateToProps = state => state
 export default connect(mapStateToProps, {
-  loadUserInfo
+  loadUserInfo, selectedAccount
 })(AccountTool)
