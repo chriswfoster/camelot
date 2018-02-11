@@ -2,11 +2,13 @@
 //action types
 const LOAD_USER='LOAD_USER'
 const GET_USER="GET_USER"
+const SELECT_ACCOUNT="SELECT_ACCOUNT"
 
 
 //initial state
 const initialState = {
-user: {}
+user: {},
+selectedAccount: ""
 }
 
 //reducer
@@ -20,7 +22,8 @@ export default function reducer(state = initialState, action) {
             user: action.payload })
         case GET_USER:
         return Object.assign({}, state, {user: action.payload})
-
+        case SELECT_ACCOUNT:
+        return Object.assign({}, state, {selectedAccount: action.payload})
       
         default:
         return state;
@@ -34,6 +37,12 @@ export function loadUserInfo(user) {
   return {
     type: GET_USER,
     payload: user.data
+  }
+}
+export function selectedAccount(account){
+  return{
+    type: SELECT_ACCOUNT,
+    payload: account
   }
 }
 // export function loadAccountData
