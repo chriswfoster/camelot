@@ -1,14 +1,17 @@
+import axios from 'axios';
 
 //action types
 const LOAD_USER='LOAD_USER'
 const GET_USER="GET_USER"
 const SELECT_ACCOUNT="SELECT_ACCOUNT"
+const CHAR_LIST = "CHAR_LIST"
 
 
 //initial state
 const initialState = {
 user: {},
-selectedAccount: ""
+selectedAccount: "",
+characterList: []
 }
 
 //reducer
@@ -43,6 +46,12 @@ export function selectedAccount(account){
   return{
     type: SELECT_ACCOUNT,
     payload: account
+  }
+}
+export function getCharacterList(account){
+  return{
+    type: CHAR_LIST,
+    payload: axios.put('/api/characterList')
   }
 }
 // export function loadAccountData

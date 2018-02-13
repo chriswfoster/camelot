@@ -26,6 +26,11 @@ class AccountTool extends Component {
       })
   }
 
+  accountSelectHander(account){
+    this.props.selectedAccount(account)
+    this.setState({currentView: ""})
+  }
+
   render() {
     const { selectedAccount } = this.props
     const { daocaccount } = this.props.user
@@ -33,7 +38,7 @@ class AccountTool extends Component {
     const accountlist = daocaccount
       ? parsedaccounts.map((account, i) => (
           <div
-            onClick={() => selectedAccount(account)}
+            onClick={() => this.accountSelectHander(account)}
             className="accountsbuttons"
           >
             {account}
@@ -54,7 +59,7 @@ class AccountTool extends Component {
         </div>
 
 
-        
+
       </div>
     )
   }
