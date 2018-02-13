@@ -1,0 +1,56 @@
+.accountsbuttons {
+  cursor: pointer;
+  width: auto;
+  padding: 5px;
+}
+.accountsbuttons:hover {
+  border-style: solid;
+  border-color: white;
+}
+
+.accountlistorganizer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+  width: 100%;
+  height: 100%;
+}
+
+.accounttoolbackground {
+  height: 90vh;
+  width: 100vw;
+  position: absolute;
+}
+
+.accountSelector {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes viewMover {
+  0% {
+    top: -200%;
+  }
+  50% {
+    top: 0%;
+  }
+
+  100% {
+    top: -10%;
+  }
+}
+@-webkit-keyframes viewMover {
+  0% {
+    top: -200%;
+  }
+  50% {
+    top: 0%;
+  }
+
+  100% {
+    top: -10%;
+  }
+}

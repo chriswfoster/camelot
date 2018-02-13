@@ -9,6 +9,7 @@ import LoginSignup from './components/LoginSignup/LoginSignup'
 import YourNode from './components/YourNode/YourNode'
 import ModelViewer from './components/ModelViewer/ModelViewer'
 import AccountTool from './components/AccountTool/AccountTool'
+import CharacterSelect from './components/CharacterSelect/CharacterSelect'
 import store from './store'
 
 
@@ -21,6 +22,7 @@ export default(
     <Route path="/loginsignup" component={LoginSignup} />
     <Route path="/yournode" component={YourNode} />
     <Route path="/modelviewer" component={ModelViewer} />
+    <Route path="/characterselect" component={CharacterSelect} />
         
         </Switch>
     </Provider>

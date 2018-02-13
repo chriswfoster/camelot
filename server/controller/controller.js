@@ -106,7 +106,6 @@ module.exports = {
     const connection = req.app.get("connection")
     const { username, daocaccount } = req.body
 
-    connection.connect()
     connection.query(
       `UPDATE webusers set daocaccount = JSON_MERGE ( daocaccount, '["${daocaccount}"]') where username = '${username}'`
     )
@@ -137,6 +136,21 @@ module.exports = {
         } else if (results.length < 1) {
           return res.status(200).send("UnknownUser")
         }
+      }
+    )
+  },
+
+  getUserInfo: (req, res, next) => {
+    const connection = req.app.get("connection")
+    const { username } = req.body
+
+    connection.query(
+      `SELECT * FROM webusers where username = '${username}'`,
+      function(error, results, fields) {
+        if (error) {
+          console.log(error)
+        } else return console.log(results) & res.status(200).send(results)
+        c
       }
     )
   },
