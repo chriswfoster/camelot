@@ -164,5 +164,19 @@ module.exports = {
     const axios = req.app.get("axios")
     var fs = require("./mobs.json")
     res.status(200).send(fs)
+  }, 
+  getCharacterList: (req, res, next) => {
+    const connection = req.app.get("connection")
+    const { account } = req.body
+
+    connection.query(
+      `SELECT * FROM dolcharacters where AccountName = '${account}'`,
+      function(error, results, fields) {
+        if (error) {
+          console.log(error)
+        } else return console.log(results) & res.status(200).send(results)
+        c
+      }
+    )
   }
 }
