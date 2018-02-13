@@ -30,31 +30,34 @@
 }
 
 .accountSelector {
-  width: 100%;
-  height: 100%;
+  width: 60%;
+  background-color: black;
+  height: 60%;
+
+  top: 20vh;
+  position: absolute;
+  animation-name: viewMover;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+  -webkit-animation-name: viewMover;
+  -webkit-animation-duration: 0.75s;
+  -webkit-animation-fill-mode: forwards;
+
 }
 
 @keyframes viewMover {
-  0% {
-    top: -200%;
-  }
-  50% {
-    top: 0%;
-  }
-
-  100% {
-    top: -10%;
-  }
-}
+    0% {
+        left: 200vw;
+    }
+      100% {
+        left: 20vw;
+      }
+    }
 @-webkit-keyframes viewMover {
-  0% {
-    top: -200%;
-  }
-  50% {
-    top: 0%;
-  }
-
-  100% {
-    top: -10%;
-  }
-}
+    0% {
+        left: 200vw;
+    }
+      100% {
+        left: 20vw;
+      }
+    }

@@ -43,12 +43,18 @@ class AccountTool extends Component {
 
     return (
       <div style={{ color: "white" }} className="accounttoolbackground">
+
+
+
         <div className={this.state.currentView}>
           <div className="accountlistorganizer">
             Which account do you want access to?
             {accountlist ? accountlist : null}
           </div>
         </div>
+
+
+        
       </div>
     )
   }
