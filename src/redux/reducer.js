@@ -8,7 +8,7 @@ const CHAR_LIST = "CHAR_LIST"
 
 //initial state
 const initialState = {
-  user: {},
+  user: {daocaccount: '["None"]'},
   selectedAccount: "",
   characterList: []
 }

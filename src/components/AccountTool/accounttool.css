@@ -94,11 +94,11 @@
     display: none;
 }
 .characterListSlideIn{
-    width: 60%;
+    width: 22%;
     background-color: rgba(0, 0, 0, 0.363);
-    height: 60%;
-    top: 20vh;
-    color: white;
+    height: 59%;
+    top: 14vh;
+    color: yellow;
     position: absolute;
     animation-name: charListIn;
     animation-duration: 0.75s;
@@ -112,7 +112,7 @@
       right: -50vw;
     }
     100% {
-      right: 20vw;
+      right: 6vw;
     }
   }
   @-webkit-keyframes charListIn {
@@ -122,4 +122,7 @@
       100% {
         right: 20vw;
       }
+    }
+    .characterListSpacing{
+        margin-bottom: 5%;
     }

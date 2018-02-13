@@ -14,8 +14,22 @@ class AccountTool extends Component {
     super(props)
     this.state = {
       accountSelectorView: "accountSelector",
-      charListView: "hideObjects"
-    }
+      charListView: "hideObjects",
+      fakeCharList: [
+          {Name: "blueberry"},
+          {Name: "hank"},
+          {Name: "Billy"},
+          {Name: "Chuck"},
+          {Name: "Rodney"},
+          {Name: "Killgore"},
+          {Name: "Billybob"},
+          {Name: "Chriswf"},
+          {Name: "AstroNOT"},
+          {Name: "Whodatboi"}
+
+      ]
+      }
+    
   }
 
   componentDidMount() {
@@ -54,8 +68,8 @@ class AccountTool extends Component {
           </div>
         ))
       : null
-    const charList = characterList.map((char, i) => (
-        <div key={i}>
+    const charList = this.state.fakeCharList.map((char, i) => (
+        <div key={i}className ="characterListSpacing">
             {char.Name}
             </div>
     ))
