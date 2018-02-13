@@ -21,7 +21,7 @@
 }
 
 .accounttoolbackground {
-  background-image: url('./daoccharacterselect.JPG');
+  background-image: url("./daoccharacterselect.JPG");
   background-size: 90% 100%;
   background-repeat: no-repeat;
   background-position-x: 5vw;
@@ -34,31 +34,92 @@
   width: 60%;
   background-color: black;
   height: 60%;
-
   top: 20vh;
   position: absolute;
-  animation-name: viewMover;
+  animation-name: viewMoverIn;
   animation-duration: 0.75s;
   animation-fill-mode: forwards;
-  -webkit-animation-name: viewMover;
+  -webkit-animation-name: viewMoverIn;
   -webkit-animation-duration: 0.75s;
   -webkit-animation-fill-mode: forwards;
-
 }
 
-@keyframes viewMover {
+@keyframes viewMoverIn {
+  0% {
+    left: 200vw;
+  }
+  100% {
+    left: 20vw;
+  }
+}
+@-webkit-keyframes viewMoverIn {
+  0% {
+    left: 200vw;
+  }
+  100% {
+    left: 20vw;
+  }
+}
+.accountSelectorOut {
+  width: 60%;
+  background-color: black;
+  height: 60%;
+  top: 20vh;
+  position: absolute;
+  animation-name: viewMoverOut;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+  -webkit-animation-name: viewMoverOut;
+  -webkit-animation-duration: 0.75s;
+  -webkit-animation-fill-mode: forwards;
+}
+@keyframes viewMoverOut {
+  0% {
+    left: 20vw;
+  }
+  100% {
+    left: -200vw;
+  }
+}
+@-webkit-keyframes viewMoverOut {
+  0% {
+    left: 20vw;
+  }
+  100% {
+    left: -200vw;
+  }
+}
+
+.hideObjects{
+    display: none;
+}
+.characterListSlideIn{
+    width: 60%;
+    background-color: rgba(0, 0, 0, 0.363);
+    height: 60%;
+    top: 20vh;
+    color: white;
+    position: absolute;
+    animation-name: charListIn;
+    animation-duration: 0.75s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: charListIn;
+    -webkit-animation-duration: 0.75s;
+    -webkit-animation-fill-mode: forwards;
+}
+@keyframes charListIn {
     0% {
-        left: 200vw;
+      right: -50vw;
     }
-      100% {
-        left: 20vw;
+    100% {
+      right: 20vw;
+    }
+  }
+  @-webkit-keyframes charListIn {
+    0% {
+        right: -50vw;
       }
-    }
-@-webkit-keyframes viewMover {
-    0% {
-        left: 200vw;
-    }
       100% {
-        left: 20vw;
+        right: 20vw;
       }
     }

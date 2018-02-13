@@ -168,6 +168,7 @@ module.exports = {
   getCharacterList: (req, res, next) => {
     const connection = req.app.get("connection")
     const { account } = req.body
+    console.log(account)
 
     connection.query(
       `SELECT * FROM dolcharacters where AccountName = '${account}'`,

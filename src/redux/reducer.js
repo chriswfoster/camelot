@@ -49,15 +49,17 @@ export function loadUserInfo(user) {
   }
 }
 export function selectedAccount(account) {
+  console.log(account)
   return {
     type: SELECT_ACCOUNT,
     payload: account
   }
 }
 export function getCharacterList(account) {
+  console.log(account)
   return {
     type: CHAR_LIST,
-    payload: axios.put("/api/characterList").then(response => response.data)
+    payload: axios.put("/api/characterList", {account: account}).then(response => response.data)
   }
 }
 // export function loadAccountData

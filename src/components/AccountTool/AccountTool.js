@@ -13,7 +13,8 @@ class AccountTool extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentView: "accountSelector"
+      accountSelectorView: "accountSelector",
+      charListView: "hideObjects"
     }
   }
 
@@ -31,14 +32,15 @@ class AccountTool extends Component {
   }
 
   accountSelectHander(account) {
+      
     this.props.selectedAccount(account)
     this.props.getCharacterList(account)
-    this.setState({ currentView: "" })
+    this.setState({ accountSelectorView: "accountSelectorOut", charListView: "characterListSlideIn" })
   }
 
   render() {
     console.log(this.props)
-    const { selectedAccount } = this.props
+    const { selectedAccount, characterList } = this.props
     const { daocaccount } = this.props.user
     const parsedaccounts = daocaccount ? JSON.parse(daocaccount) : null
     const accountlist = daocaccount
@@ -46,15 +48,27 @@ class AccountTool extends Component {
           <div
             onClick={() => this.accountSelectHander(account)}
             className="accountsbuttons"
+            key = {i}
           >
             {account}
           </div>
         ))
       : null
+    const charList = characterList.map((char, i) => (
+        <div key={i}>
+            {char.Name}
+            </div>
+    ))
 
     return (
       <div style={{ color: "white" }} className="accounttoolbackground">
-        <div className={this.state.currentView}>
+        
+        <div className={this.state.charListView}>
+            {charList}
+            </div>
+        
+        
+        <div className={this.state.accountSelectorView}>
           <div className="accountlistorganizer">
             Which account do you want access to?
             {accountlist ? accountlist : null}
