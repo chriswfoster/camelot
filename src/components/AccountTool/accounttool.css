@@ -98,6 +98,7 @@
     background-color: rgba(0, 0, 0, 0.363);
     height: 59%;
     top: 14vh;
+    padding-top: 1%;
     color: yellow;
     position: absolute;
     animation-name: charListIn;
@@ -106,6 +107,13 @@
     -webkit-animation-name: charListIn;
     -webkit-animation-duration: 0.75s;
     -webkit-animation-fill-mode: forwards;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	align-content: stretch;
+  
 }
 @keyframes charListIn {
     0% {
@@ -124,5 +132,23 @@
       }
     }
     .characterListSpacing{
-        margin-bottom: 5%;
+        margin-bottom: 9%;
+        cursor: pointer;
+        margin-left: 10%;
+        
     }
+   ul {
+        list-style: none;
+      
+    
+   }
+   input{
+       visibility: hidden;
+   }
+   .buttonSelector{
+       display: inline-block;
+       width: 2vh;
+       height: 2vh;
+       background-color: white;
+       border-radius: 50%;
+   }

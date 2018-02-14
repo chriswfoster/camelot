@@ -69,9 +69,15 @@ class AccountTool extends Component {
         ))
       : null
     const charList = this.state.fakeCharList.map((char, i) => (
+        
         <div key={i}className ="characterListSpacing">
-            {char.Name}
-            </div>
+      <div className="buttonSelector"/>
+        <input type='radio' value='1' name='radio' id='radio1'/>
+       
+        <label for='radio1'>{char.Name}</label>
+
+        </div>
+      
     ))
 
     return (
