@@ -144,10 +144,11 @@
        display: inline-block;
        width: 2vh;
        height: 2vh;
-       background-color: white;
+       background-color: #382C2E;
        border-radius: 50%;
        border-style: solid;
-       border-color: rgb(255, 123, 90);
+       border-color: #D5CBC1;
+       border-width: 2px;
     
    }
    .characterListSpacing label{
@@ -156,5 +157,5 @@
    }
    .characterListSpacing input:checked + div {
     
-    background-color: red;
+    background-color: #D5CBC1;
 }
