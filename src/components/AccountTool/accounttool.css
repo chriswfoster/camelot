@@ -90,72 +90,69 @@
   }
 }
 
-.hideObjects{
-    display: none;
+.hideObjects {
+  display: none;
 }
-.characterListSlideIn{
-    width: 22%;
-    background-color: rgba(0, 0, 0, 0);
-    height: 59%;
-    top: 14vh;
-    padding-top: 1%;
-    color: yellow;
-    position: absolute;
-    animation-name: charListIn;
-    animation-duration: 0.75s;
-    animation-fill-mode: forwards;
-    -webkit-animation-name: charListIn;
-    -webkit-animation-duration: 0.75s;
-    -webkit-animation-fill-mode: forwards;
-    display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: flex-start;
-	align-content: stretch;
-  
+.characterListSlideIn {
+  width: 22%;
+  background-color: rgba(0, 0, 0, 0);
+  height: 71%;
+  top: 14vh;
+  padding-top: 1%;
+  color: yellow;
+  position: absolute;
+  animation-name: charListIn;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+  -webkit-animation-name: charListIn;
+  -webkit-animation-duration: 0.75s;
+  -webkit-animation-fill-mode: forwards;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: stretch;
+  overflow-y: scroll;
 }
 @keyframes charListIn {
-    0% {
-      right: -50vw;
-    }
-    100% {
-      right: 6vw;
-    }
+  0% {
+    right: -50vw;
   }
-  @-webkit-keyframes charListIn {
-    0% {
-        right: -50vw;
-      }
-      100% {
-        right: 20vw;
-      }
-    }
-    .characterListSpacing{
-        margin-bottom: 9%;
-        cursor: pointer;
-        margin-left: 10%;
-        
-    }
-   .characterListSpacing input{
-       visibility: hidden;
-   }
-   .buttonSelector{
-       display: inline-block;
-       width: 2vh;
-       height: 2vh;
-       background-color: #382C2E;
-       border-radius: 50%;
-       border-style: solid;
-       border-color: #D5CBC1;
-       border-width: 2px;
-    
-   }
-   .characterListSpacing label{
-       cursor: pointer;
-       margin-left: 2vw;
-   }
-   .characterListSpacing input:checked + div {
-    
-    background-color: #D5CBC1;
+  100% {
+    right: 6vw;
+  }
+}
+@-webkit-keyframes charListIn {
+  0% {
+    right: -50vw;
+  }
+  100% {
+    right: 20vw;
+  }
+}
+.characterListSpacing {
+  margin-bottom: 9%;
+  cursor: pointer;
+  margin-left: 10%;
+}
+.characterListSpacing input {
+  visibility: hidden;
+}
+.buttonSelector {
+  display: inline-block;
+  width: 2vh;
+  height: 2vh;
+  background-color: #382c2e;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #d5cbc1;
+  border-width: 2px;
+}
+.characterListSpacing label {
+  cursor: pointer;
+  margin-left: 2vw;
+}
+.characterListSpacing input:checked + div {
+  background-color: #d5cbc1;
 }
