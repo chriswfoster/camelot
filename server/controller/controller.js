@@ -185,11 +185,20 @@ module.exports = {
     const {DOLCharacters_ID} = req.body
 
     connection.query(
-      `SELECT * FROM inventory where DOLCharacters_ID = '${DOLCharacters_ID}'`,
+      `select * from itemunique iu
+      where iu.Id_nb in (select UTemplate_ID from inventory where OwnerID = '${DOLCharacters_ID}');`,
       function(error, results, fields) {
         if (error) {
           console.log(error)
-        } else return console.log(results) & res.status(200).send(results)
+        } else return console.log(results) & res.status(200).send("here's 1", results)
+        
+      }
+      `select it.* from itemtemplate it
+      where it.Id_nb in (select ITemplate_Id from inventory where OwnerID = '${DOLCharacters_ID}');`,
+      function(error, results, fields) {
+        if (error) {
+          console.log(error)
+        } else return console.log(results) & res.status(200).send("here's 2", results)
         
       }
     )
