@@ -3,7 +3,8 @@ import { connect } from "react-redux"
 import {
   loadUserInfo,
   selectedAccount,
-  getCharacterList
+  getCharacterList,
+  inspectCharacter
 } from "../../redux/reducer"
 import axios from "axios"
 
@@ -16,28 +17,26 @@ class AccountTool extends Component {
       accountSelectorView: "accountSelector",
       charListView: "hideObjects",
       fakeCharList: [
-          {Name: "blueberry"},
-          {Name: "hank"},
-          {Name: "Billy"},
-          {Name: "Chuck"},
-          {Name: "Rodney"},
-          {Name: "Killgore"},
-          {Name: "Billybob"},
-          {Name: "Chriswf"},
-          {Name: "AstroNOT"},
-          {Name: "hank"},
-          {Name: "Billy"},
-          {Name: "Chuck"},
-          {Name: "Rodney"},
-          {Name: "Killgore"},
-          {Name: "Billybob"},
-          {Name: "Chriswf"},
-          {Name: "AstroNOT"},
-          {Name: "Whodatboi"}
-
+        { Name: "blueberry" },
+        { Name: "hank" },
+        { Name: "Billy" },
+        { Name: "Chuck" },
+        { Name: "Rodney" },
+        { Name: "Killgore" },
+        { Name: "Billybob" },
+        { Name: "Chriswf" },
+        { Name: "AstroNOT" },
+        { Name: "hank" },
+        { Name: "Billy" },
+        { Name: "Chuck" },
+        { Name: "Rodney" },
+        { Name: "Killgore" },
+        { Name: "Billybob" },
+        { Name: "Chriswf" },
+        { Name: "AstroNOT" },
+        { Name: "Whodatboi" }
       ]
-      }
-    
+    }
   }
 
   componentDidMount() {
@@ -54,15 +53,17 @@ class AccountTool extends Component {
   }
 
   accountSelectHander(account) {
-      
     this.props.selectedAccount(account)
     this.props.getCharacterList(account)
-    this.setState({ accountSelectorView: "accountSelectorOut", charListView: "characterListSlideIn" })
+    this.setState({
+      accountSelectorView: "accountSelectorOut",
+      charListView: "characterListSlideIn"
+    })
   }
 
   render() {
     console.log(this.props)
-    const { selectedAccount, characterList } = this.props
+    const { selectedAccount, characterList, inspectCharacter } = this.props
     const { daocaccount } = this.props.user
     const parsedaccounts = daocaccount ? JSON.parse(daocaccount) : null
     const accountlist = daocaccount
@@ -70,31 +71,33 @@ class AccountTool extends Component {
           <div
             onClick={() => this.accountSelectHander(account)}
             className="accountsbuttons"
-            key = {i}
+            key={i}
           >
             {account}
           </div>
         ))
       : null
-    const charList = this.state.fakeCharList.map((char, i) => (
-        
-        <div key={i}className ="characterListSpacing">
-        <input type='radio' value='1' name='radio' id={`radio${i}`} />
-        <div for={`radio${i}`} className="buttonSelector"> <div/></div>
-        <label for={`radio${i}`} >{char.Name}</label>
-
+    const charList = characterList.map((char, i) => (
+      <div key={i} className="characterListSpacing">
+        <input
+          type="radio"
+          value="1"
+          name="radio"
+          id={`radio${i}`}
+          onChange={() => inspectCharacter(char.DOLCharacters_ID)}
+        />
+        <div for={`radio${i}`} className="buttonSelector">
+          {" "}
+          <div />
         </div>
-      
+        <label for={`radio${i}`}>{char.Name}</label>
+      </div>
     ))
 
     return (
       <div style={{ color: "white" }} className="accounttoolbackground">
-        
-        <div className={this.state.charListView}>
-            {charList}
-            </div>
-        
-        
+        <div className={this.state.charListView}>{charList}</div>
+
         <div className={this.state.accountSelectorView}>
           <div className="accountlistorganizer">
             Which account do you want access to?
@@ -109,5 +112,6 @@ const mapStateToProps = state => state
 export default connect(mapStateToProps, {
   loadUserInfo,
   selectedAccount,
-  getCharacterList
+  getCharacterList,
+  inspectCharacter
 })(AccountTool)

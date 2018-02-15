@@ -27,7 +27,10 @@ class YourNode extends Component {
   componentDidMount() {
     this.props.user.daocaccount
       ? this.props.user.daocaccount.length > 2
-        ? this.setState({ panelview: "true", redirect: <Redirect to="accounttool" /> })
+        ? this.setState({
+            panelview: "true",
+            redirect: <Redirect to="accounttool" />
+          })
         : this.setState({ panelview: "false" })
       : this.setState({ panelview: "false" })
   }
@@ -121,7 +124,7 @@ class YourNode extends Component {
       secondCharacter,
       thirdCharacter
     } = this.state
-
+    console.log(this.props)
     return (
       <div className="yournodebackground">
         <div className="signanimator">
