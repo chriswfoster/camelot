@@ -5,12 +5,14 @@ const LOAD_USER = "LOAD_USER"
 const GET_USER = "GET_USER"
 const SELECT_ACCOUNT = "SELECT_ACCOUNT"
 const CHAR_LIST = "CHAR_LIST"
+const CHAR_ITEM_LIST = "CHAR_ITEM_LIST"
 
 //initial state
 const initialState = {
   user: {daocaccount: '["None"]'},
   selectedAccount: "",
-  characterList: []
+  characterList: [],
+  charItemList: []
 }
 
 //reducer
@@ -30,7 +32,14 @@ export default function reducer(state = initialState, action) {
         isLoading: false,
         characterList: action.payload
       })
-    case GET_USER:
+      case CHAR_ITEM_LIST + "_PENDING":
+      return Object.assign({}, state, { isLoading: true })
+    case CHAR_ITEM_LIST + "_FULFILLED":
+      return Object.assign({}, state, {
+        isLoading: false,
+        charItemList: action.payload
+      })
+    case SELECT_ACCOUNT:
       return Object.assign({}, state, { user: action.payload })
     case SELECT_ACCOUNT:
       return Object.assign({}, state, { selectedAccount: action.payload })
@@ -60,6 +69,12 @@ export function getCharacterList(account) {
   return {
     type: CHAR_LIST,
     payload: axios.put("/api/characterList", {account: account}).then(response => response.data)
+  }
+}
+export function inspectCharacter(characterID){
+  return{
+    type: CHAR_ITEM_LIST,
+    payload: axios.put("/api/inspectCharacter", {DOLCharacters_ID: characterID}).then(response => response.data)
   }
 }
 // export function loadAccountData
