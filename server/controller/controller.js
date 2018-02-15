@@ -176,7 +176,21 @@ module.exports = {
         if (error) {
           console.log(error)
         } else return console.log(results) & res.status(200).send(results)
-        c
+        
+      }
+    )
+  },
+  inspectCharacter: (req, res, next) => {
+    const connection = req.app.get("connection")
+    const {DOLCharacters_ID} = req.body
+
+    connection.query(
+      `SELECT * FROM inventory where DOLCharacters_ID = '${DOLCharacters_ID}'`,
+      function(error, results, fields) {
+        if (error) {
+          console.log(error)
+        } else return console.log(results) & res.status(200).send(results)
+        
       }
     )
   }
