@@ -6,7 +6,9 @@ class ItemsDisplayed extends Component{
 
     render(){
         const {itemList} = this.props
-        const listOfItems = itemList.map(item)
+        const listOfItems = itemList.map((item)=> (
+            item.id_nb
+        ))
         return(
             <div>
                 </div>
@@ -14,3 +16,4 @@ class ItemsDisplayed extends Component{
     }
 
 }
+export default ItemsDisplay
