@@ -11,7 +11,8 @@ const CHAR_TO_INSPECT = "CHAR_TO_INSPECT"
 const initialState = {
   user: {daocaccount: '["None"]'},
   selectedAccount: "",
-  characterList: []
+  characterList: [],
+  itemList: []
 }
 
 //reducer
@@ -30,6 +31,13 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         isLoading: false,
         characterList: action.payload
+      })
+      case CHAR_TO_INSPECT + "_PENDING":
+      return Object.assign({}, state, { isLoading: true })
+    case CHAR_TO_INSPECT + "_FULFILLED":
+      return Object.assign({}, state, {
+        isLoading: false,
+        itemList: action.payload
       })
     case GET_USER:
       return Object.assign({}, state, { user: action.payload })
@@ -69,7 +77,7 @@ let response;
     type: CHAR_TO_INSPECT,
     payload: axios.put("/api/inspectCharacter1", {DOLCharacters_ID: character})
     .then(resp => response = resp)
-    .then(() => axios.put("/api/inspectCharacter2", {DOLCharacters_ID: character}).then(result => console.log(response.data.concat(result.data))))
+    .then(() => axios.put("/api/inspectCharacter2", {DOLCharacters_ID: character}).then(result => response.data.concat(result.data)))
   }
 }
 // export function loadAccountData

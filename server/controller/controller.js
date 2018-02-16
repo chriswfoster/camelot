@@ -182,8 +182,6 @@ module.exports = {
   inspectCharacter1: (req, res, next) => {
     const connection = req.app.get("connection")
     const { DOLCharacters_ID } = req.body
-    const one = [1]
-
 
     connection.query(
       `select * from itemunique iu
@@ -193,7 +191,7 @@ module.exports = {
           console.log(error)
         } else
           return (
-            console.log(results) & res.status(200).send(one.concat(results))
+            console.log(results) & res.status(200).send(results)
           )
       }
     )
@@ -201,7 +199,6 @@ module.exports = {
   inspectCharacter2: (req, res, next) => {
     const connection = req.app.get("connection")
     const { DOLCharacters_ID } = req.body
-    const two= [2]
   
       connection.query(
        `select it.* from itemtemplate it
@@ -209,7 +206,7 @@ module.exports = {
        function(error, results, fields) {
         if (error) {
           console.log(error)
-        } else return console.log(results) & res.status(200).send(two.concat(results))
+        } else return console.log(results) & res.status(200).send(results)
 
       })
     }
