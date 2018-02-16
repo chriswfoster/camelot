@@ -86,7 +86,7 @@ class AccountTool extends Component {
             {accountlist ? accountlist : null}
           </div>
         </div>
-        <div className={itemdisplayView}><ItemsDisplayed />
+        <div className={this.state.itemdisplayView}><ItemsDisplayed />
           </div>
       </div>
     )
