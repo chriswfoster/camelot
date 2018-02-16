@@ -7,7 +7,7 @@ import {
   inspectCharacter
 } from "../../redux/reducer"
 import axios from "axios"
-import ItemsDisplay from './ChildCompnents/ItemsDisplayed'
+import ItemsDisplayed from './ChildCompnents/ItemsDisplayed'
 
 import "./accounttool.css"
 
@@ -17,26 +17,7 @@ class AccountTool extends Component {
     this.state = {
       accountSelectorView: "accountSelector",
       charListView: "hideObjects",
-      fakeCharList: [
-        { Name: "blueberry" },
-        { Name: "hank" },
-        { Name: "Billy" },
-        { Name: "Chuck" },
-        { Name: "Rodney" },
-        { Name: "Killgore" },
-        { Name: "Billybob" },
-        { Name: "Chriswf" },
-        { Name: "AstroNOT" },
-        { Name: "hank" },
-        { Name: "Billy" },
-        { Name: "Chuck" },
-        { Name: "Rodney" },
-        { Name: "Killgore" },
-        { Name: "Billybob" },
-        { Name: "Chriswf" },
-        { Name: "AstroNOT" },
-        { Name: "Whodatboi" }
-      ]
+      itemdisplayView: "hideObjects"
     }
   }
 
@@ -105,6 +86,8 @@ class AccountTool extends Component {
             {accountlist ? accountlist : null}
           </div>
         </div>
+        <div className={itemdisplayView}><ItemsDisplayed />
+          </div>
       </div>
     )
   }

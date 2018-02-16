@@ -16,4 +16,4 @@ class ItemsDisplayed extends Component{
     }
 
 }
-export default ItemsDisplay
+export default ItemsDisplayed
