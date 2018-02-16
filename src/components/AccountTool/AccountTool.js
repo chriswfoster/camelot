@@ -7,6 +7,7 @@ import {
   inspectCharacter
 } from "../../redux/reducer"
 import axios from "axios"
+import ItemsDisplay from './ChildCompnents/ItemsDisplayed'
 
 import "./accounttool.css"
 
