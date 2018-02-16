@@ -64,9 +64,12 @@ export function getCharacterList(account) {
   }
 }
 export function inspectCharacter(character){
+let response;
   return {
     type: CHAR_TO_INSPECT,
-    payload: axios.put("/api/inspectCharacter").then(response => response.data)
+    payload: axios.put("/api/inspectCharacter1", {DOLCharacters_ID: character})
+    .then(resp => response = resp)
+    .then(() => axios.put("/api/inspectCharacter2", {DOLCharacters_ID: character}).then(result => console.log(response.data.concat(result.data))))
   }
 }
 // export function loadAccountData

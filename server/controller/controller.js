@@ -164,7 +164,7 @@ module.exports = {
     const axios = req.app.get("axios")
     var fs = require("./mobs.json")
     res.status(200).send(fs)
-  }, 
+  },
   getCharacterList: (req, res, next) => {
     const connection = req.app.get("connection")
     const { account } = req.body
@@ -176,13 +176,14 @@ module.exports = {
         if (error) {
           console.log(error)
         } else return console.log(results) & res.status(200).send(results)
-        
       }
     )
   },
-  inspectCharacter: (req, res, next) => {
+  inspectCharacter1: (req, res, next) => {
     const connection = req.app.get("connection")
-    const {DOLCharacters_ID} = req.body
+    const { DOLCharacters_ID } = req.body
+    const one = [1]
+
 
     connection.query(
       `select * from itemunique iu
@@ -190,17 +191,26 @@ module.exports = {
       function(error, results, fields) {
         if (error) {
           console.log(error)
-        } else return console.log(results) & res.status(200).send("here's 1", results)
-        
-      }
-      `select it.* from itemtemplate it
-      where it.Id_nb in (select ITemplate_Id from inventory where OwnerID = '${DOLCharacters_ID}');`,
-      function(error, results, fields) {
-        if (error) {
-          console.log(error)
-        } else return console.log(results) & res.status(200).send("here's 2", results)
-        
+        } else
+          return (
+            console.log(results) & res.status(200).send(one.concat(results))
+          )
       }
     )
-  }
+  },
+  inspectCharacter2: (req, res, next) => {
+    const connection = req.app.get("connection")
+    const { DOLCharacters_ID } = req.body
+    const two= [2]
+  
+      connection.query(
+       `select it.* from itemtemplate it
+      where it.Id_nb in (select ITemplate_Id from inventory where OwnerID = '${DOLCharacters_ID}');`,
+       function(error, results, fields) {
+        if (error) {
+          console.log(error)
+        } else return console.log(results) & res.status(200).send(two.concat(results))
+
+      })
+    }
 }
