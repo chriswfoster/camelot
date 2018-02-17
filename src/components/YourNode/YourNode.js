@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Redirect } from "react-router"
-import AccountTool from "../AccountTool/AccountTool"
+
 import axios from "axios"
 
 import hangingsign from "./hangingsign.png"
