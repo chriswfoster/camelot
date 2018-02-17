@@ -116,9 +116,8 @@ class YourNode extends Component {
   }
 
   render(props) {
-    const { user } = this.props
+
     const {
-      redirect,
       panelview,
       firstCharacter,
       secondCharacter,
