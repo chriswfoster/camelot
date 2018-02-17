@@ -12,9 +12,10 @@ class Home extends Component {
       thenews: [
         {
           title: "No stories here",
-          postbody: "REFRESH PAGE: articles should then load",
-          postdate: ""
-    }]
+          postbody: "REFRESH PAGE: That may load the articles.",
+          postdate: "2018-01-15 22:50:38"
+        }
+      ]
     }
   }
 
@@ -26,8 +27,8 @@ class Home extends Component {
 
   render() {
     const { thenews } = this.state
-    let newsarticles;
-   newsarticles = thenews.map((article, i) => (
+    let newsarticles
+    newsarticles = thenews.map((article, i) => (
       <div className="newsfeedpostbox" key={i}>
         <h3>{article.title}</h3>
         <p>{article.postbody}</p>
@@ -48,10 +49,11 @@ class Home extends Component {
             <div>
               {" "}
               <p>
-                Hey everyone, remember to join the discord. I'll try to post patch notes here as well as in discord.
+                Hey everyone, remember to join the discord. I'll try to post
+                patch notes here as well as in discord.
               </p>
               <p>
-               Here's my discord (<b style={{ color: "lightblue" }}>TCkYBVx</b>),
+                Here's my discord (<b style={{ color: "lightblue" }}>TCkYBVx</b>),
                 you're free to drop by for a hello, drop ideas in the idea
                 channel, etc.
               </p>
