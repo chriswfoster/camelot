@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import {
   loadUserInfo,
+  selectedAccount,
   getCharacterList,
   inspectCharacter
 } from "../../redux/reducer"
@@ -23,14 +24,14 @@ class AccountTool extends Component {
   componentDidMount() {
     const { username } = this.props.user
     console.log(username)
-    axios
-      .put("getUserInfo", {
-        username: username
-      })
-      .then(response => {
-        console.log(response.data)
-        this.props.loadUserInfo(response.data)
-      })
+   // axios
+      //.put("/api/getUserInfo", {
+    //    username: username
+   //   })
+    //  .then(response => {
+     //   console.log(response.data)
+     //   this.props.loadUserInfo(response.data)
+    //  })
   }
 
   accountSelectHander(account) {
@@ -67,11 +68,11 @@ class AccountTool extends Component {
           id={`radio${i}`}
           onChange={() => inspectCharacter(char.DOLCharacters_ID)}
         />
-        <div for={`radio${i}`} className="buttonSelector">
+        <div htmlFor={`radio${i}`} className="buttonSelector">
           {" "}
           <div />
         </div>
-        <label for={`radio${i}`}>{char.Name}</label>
+        <label htmlFor={`radio${i}`}>{char.Name}</label>
       </div>
     ))
 
@@ -94,6 +95,7 @@ class AccountTool extends Component {
 const mapStateToProps = state => state
 export default connect(mapStateToProps, {
   loadUserInfo,
+  selectedAccount,
   getCharacterList,
   inspectCharacter
 })(AccountTool)
