@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import {
   loadUserInfo,
-  selectedAccount,
   getCharacterList,
   inspectCharacter
 } from "../../redux/reducer"
@@ -45,7 +44,7 @@ class AccountTool extends Component {
 
   render() {
     console.log(this.props)
-    const { selectedAccount, characterList, inspectCharacter } = this.props
+    const { characterList, inspectCharacter } = this.props
     const { daocaccount } = this.props.user
     const parsedaccounts = daocaccount ? JSON.parse(daocaccount) : null
     const accountlist = daocaccount
@@ -95,7 +94,6 @@ class AccountTool extends Component {
 const mapStateToProps = state => state
 export default connect(mapStateToProps, {
   loadUserInfo,
-  selectedAccount,
   getCharacterList,
   inspectCharacter
 })(AccountTool)
