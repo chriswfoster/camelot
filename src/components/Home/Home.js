@@ -9,13 +9,7 @@ class Home extends Component {
   constructor() {
     super()
     this.state = {
-      thenews: [
-        {
-          title: "No stories here",
-          postbody: "REFRESH PAGE: That may load the articles.",
-          postdate: "2018-01-15 22:50:38"
-        }
-      ]
+
     }
   }
 
@@ -28,7 +22,7 @@ class Home extends Component {
   render() {
     const { thenews } = this.state
     let newsarticles
-    newsarticles = thenews.map((article, i) => (
+    { thenews.length > 1 ? newsarticles = thenews.map((article, i) => (
       <div className="newsfeedpostbox" key={i}>
         <h3>{article.title}</h3>
         <p>{article.postbody}</p>
@@ -37,7 +31,9 @@ class Home extends Component {
           <Moment format="MMM, DD, YYYY">{article.postdate}</Moment>.
         </h6>
       </div>
-    ))
+    )) : <div>
+      
+      </div>}
     return (
       <div className="home">
         <header className="App-header">
