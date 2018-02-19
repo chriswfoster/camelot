@@ -9,7 +9,7 @@ class Home extends Component {
   constructor() {
     super()
     this.state = {
-
+      thenews: []
     }
   }
 
@@ -22,18 +22,26 @@ class Home extends Component {
   render() {
     const { thenews } = this.state
     let newsarticles
-    { thenews.length > 1 ? newsarticles = thenews.map((article, i) => (
-      <div className="newsfeedpostbox" key={i}>
-        <h3>{article.title}</h3>
-        <p>{article.postbody}</p>
-        <h6>
-          Posted <Moment fromNow>{article.postdate}</Moment>, on{" "}
-          <Moment format="MMM, DD, YYYY">{article.postdate}</Moment>.
-        </h6>
-      </div>
-    )) : <div>
-      
-      </div>}
+    {
+      thenews.length > 1 ? (
+        (newsarticles = thenews.map((article, i) => (
+          <div className="newsfeedpostbox" key={i}>
+            <h3>{article.title}</h3>
+            <p>{article.postbody}</p>
+            <h6>
+              Posted <Moment fromNow>{article.postdate}</Moment>, on{" "}
+              <Moment format="MMM, DD, YYYY">{article.postdate}</Moment>.
+            </h6>
+          </div>
+        )))
+      ) : (
+        <div className="newsfeedpostbox" >
+          <h3>No Articles Found!</h3>
+          <p>Refresh this page, perhaps the database was asleep!</p>
+          <h6>Posted on: n/a</h6>
+        </div>
+      )
+    }
     return (
       <div className="home">
         <header className="App-header">
