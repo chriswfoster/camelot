@@ -5,7 +5,9 @@ class ItemsDisplayed extends Component {
   render() {
     const { itemList } = this.props
     const listOfItems = itemList.map(item => item.Name)
-    return <div />
+    return <div>
+      {listOfItems}
+    </div>
   }
 }
 
